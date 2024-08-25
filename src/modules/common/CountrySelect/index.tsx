@@ -5,9 +5,6 @@ import cls from 'classnames';
 import { useRecoilValue } from 'recoil';
 import Select from '@/components/Select/index';
 import { CountryListItem } from '@/apis';
-import useTranslations, {
-  useRemoteTranslations,
-} from '@/hooks/useTranslations';
 import { countryListState } from '@/store';
 
 export interface CountrySelectProps {
@@ -40,17 +37,14 @@ function CountryOption({
 export default function CountrySelect(props: CountrySelectProps) {
   // restProps 将FormItem额外添加的props透传下去，不能删除
   const { round = true, defaultValue, onSelect, ...restProps } = props;
-  const { t } = useTranslations();
-  const { t: remoteT } = useRemoteTranslations();
   const list = useRecoilValue(countryListState);
   const [countryCode, setCountryCode] = useState<string>();
 
   const translateList = useMemo(() => {
     return list.map((item) => ({
       ...item,
-      country: remoteT(item.country),
     }));
-  }, [list, remoteT]);
+  }, [list]);
 
   const selectedCountryItem = useMemo(() => {
     return translateList.find((item) => item.code === countryCode);
@@ -69,9 +63,7 @@ export default function CountrySelect(props: CountrySelectProps) {
       variant="borderless"
       showSearch
       defaultValue={defaultValue}
-      placeholder={t(
-        'home.brokerage.info_quote_modal.submit.country.placeholder',
-      )}
+      placeholder={'countryplaceholder'}
       fieldNames={{
         label: 'country',
         value: 'code',

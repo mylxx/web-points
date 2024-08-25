@@ -23,9 +23,9 @@ if (isDev) {
 const nextConfig = {
   //严格模式主要用于识别不安全的生命周期、过时的API等情况。但在开发模式下，会让组件执行两次，意味着会多次调用接口，因此需关闭该模式
   reactStrictMode: false,
-  // assetPrefix: `${process.env.NEXT_PUBLIC_PREFIX}`,
+  assetPrefix: `${process.env.NEXT_PUBLIC_PREFIX}`,
   sassOptions: {},
-  webpack (config) {
+  webpack(config) {
     !isDev &&
       config.module.rules.unshift({
         test: /\.(tsx?)$/,

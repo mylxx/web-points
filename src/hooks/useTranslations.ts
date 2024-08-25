@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { useTranslations as useOriginTranslations } from 'next-intl';
-import { i18nKeyRewrite } from '@/utils/toNestedObject';
-import { LOCAL_I18N_NS, REMOTE_I18N_NS } from '@/enums/site';
+import { LOCAL_I18N_NS } from '@/enums/site';
 import enLocale from '@/locales/en.json';
 import type { ObjectNormalizePaths } from '@/types/type';
 
@@ -46,44 +45,6 @@ export default function useTranslations() {
     [translateMethod],
   );
 
-  return {
-    t,
-    raw,
-    rich,
-    markup,
-  };
-}
-
-export function useRemoteTranslations() {
-  const translateMethod = useOriginTranslations(REMOTE_I18N_NS);
-  const t = useCallback(
-    (
-      key: string,
-      values?: Parameters<typeof translateMethod>[1],
-      formats?: Parameters<typeof translateMethod>[2],
-    ) => {
-      return translateMethod(i18nKeyRewrite(key), values, formats);
-    },
-    [translateMethod],
-  );
-  const rich: typeof translateMethod.rich = useCallback(
-    (key, values, formats) => {
-      return translateMethod.rich(i18nKeyRewrite(key), values, formats);
-    },
-    [translateMethod],
-  );
-  const markup: typeof translateMethod.markup = useCallback(
-    (key, values, formats) => {
-      return translateMethod.markup(i18nKeyRewrite(key), values, formats);
-    },
-    [translateMethod],
-  );
-  const raw: typeof translateMethod.raw = useCallback(
-    (key) => {
-      return translateMethod.raw(i18nKeyRewrite(key));
-    },
-    [translateMethod],
-  );
   return {
     t,
     raw,

@@ -173,29 +173,3 @@ npm run create module SomeModule
 - AntDesign组件库： Next.js App Router 当前不支持直接使用 . 引入的子组件，如 <Select.Option />、<Typography.Text /> 等，需要从路径引入这些子组件来避免错误。
 
 **_需要上线时忽略的代码可以通过代码块build-ignore-start和build-ignore-end包裹，例如_**
-
-```tsx
-// 例子，构建时vconsole和SomeModule不会被打包
-import vconsole from 'vconsole';
-import SomeModule from '@/modules/SomeModule';
-
-// build-ignore-start
-new vconsole()
-// build-ignore-end
-
-function App() {
-  return (
-    <div>
-      {/* build-ignore-start */}
-      <SomeModule />
-      {/* build-ignore-end */}
-    </div>
-  )
-}
-
-```
-- 字体 js css 需要上生产环境的 static 域名
-- 字体单独要设置跨域 (生产的 static 域名)
-- 生产环境 的首页 需要重新配置
-- otc markets download rfq 需要设置生产环境的 nginx
-- 上线工单，老的首页重新映射
