@@ -1,0 +1,12 @@
+.header-popover {
+  :global {
+    .ant-popover-content {
+      .ant-popover-inner {
+        background: var(--dialog);
+        padding: 12px;
+        border-radius: 16px;
+        max-width: 375px;
+      }
+    }
+  }
+}

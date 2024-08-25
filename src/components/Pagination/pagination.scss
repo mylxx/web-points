@@ -1,0 +1,9 @@
+.ant-pagination .ant-pagination-item,
+.ant-pagination-item-active {
+  border-color: transparent; /* 移除选中页码的外边框 */
+}
+
+.ant-pagination .ant-pagination-item:hover {
+  border-radius: 50%;
+  background-color: #f5f6f7;
+}

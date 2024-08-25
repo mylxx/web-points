@@ -1,0 +1,29 @@
+.ant-modal-root {
+  .ant-modal-wrap {
+    @apply atPhone:overflow-hidden atPhone:bottom-0 atPhone:top-auto;
+  }
+
+  .ant-modal {
+    @apply atPhone:max-w-[100vw] atPhone:pb-0 atPhone:top-auto atPhone:m-0;
+
+    .ant-modal-content {
+      @apply p-0 atPhone:max-h-[calc(100vh-44px)] atPhone:flex atPhone:flex-col bg-frontGround;
+
+      .ant-modal-close {
+        @apply top-[32px] right-[24px] text-descriptionText;
+      }
+
+      .ant-modal-header {
+        @apply px-[24px] pt-[32px] pb-[8px] mb-0 atPhone:pb-[6px] bg-transparent;
+      }
+
+      .ant-modal-body {
+        @apply px-[24px] py-[16px] overflow-auto;
+      }
+
+      .ant-modal-footer {
+        @apply px-[24px] pt-[16px] pb-[32px] atPhone:py-[16px] mt-0;
+      }
+    }
+  }
+}
