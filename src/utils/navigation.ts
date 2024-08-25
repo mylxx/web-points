@@ -23,4 +23,3 @@ export const jumpTo = (
     `${domain}/${path}` +
     (urlParams.size > 0 ? `?${urlParams.toString()}` : '');
 };
-

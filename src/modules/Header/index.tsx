@@ -45,7 +45,6 @@ export default function Header(props: { locale?: I18N.LocaleType }) {
     }
     const isBlankLink = props.target === '_blank';
 
-
     if (props.path) {
       if (isBlankLink) {
         return LinkToOtherSystem(props.path, props.target, searchStr);

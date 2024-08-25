@@ -14,7 +14,6 @@ const isAndroid = () => {
   return getPlatform() === 'android';
 };
 
-
 const isApp = () => {
   if (!window) return false;
   // 此条件满足安卓app

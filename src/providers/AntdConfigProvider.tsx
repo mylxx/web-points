@@ -43,9 +43,9 @@ const getThemeConfig = (theme: Global.Theme): ThemeConfig => {
       Button: {
         primaryShadow: 'unset',
         boxShadow: 'unset',
-        borderRadius: 80,
-        borderRadiusLG: 80,
-        controlHeightLG: 48,
+        // borderRadius: 80,
+        borderRadiusLG: 12,
+        controlHeightLG: 50,
         controlHeight: 40,
         defaultColor: primaryColor,
         fontFamily: baiJamjureeSemibold,
@@ -90,6 +90,11 @@ const getThemeConfig = (theme: Global.Theme): ThemeConfig => {
         borderRadiusLG: 12,
         colorText: AlwaysWhite,
         contentPadding: 16,
+      },
+      Pagination: {
+        itemActiveBg: '#262626',
+        borderRadius: 8,
+        controlHeight: 40,
       },
     },
   };

@@ -5,7 +5,6 @@ const mockAPI = {
   'GET /v1/pub/mix/country': () => {
     return successResult(countryList);
   },
-
 };
 
 const init = () => {
