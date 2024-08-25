@@ -38,7 +38,6 @@ export default function cusMiddlewareFn(request: NextRequest) {
     );
   }
 
-  // TODO 生产环境是否判断osl i18n path 重定向到 DEFAULT_LOCALE
   const response = handleI18nRouting(request);
   return response;
 }
