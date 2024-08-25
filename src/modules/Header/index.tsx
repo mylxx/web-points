@@ -6,7 +6,6 @@ import { usePathname, useRouter } from '@/utils/navigation';
 import { logOut } from '@/apis';
 import { HEADER_HIDDEN_PATH } from '@/enums/site';
 import {
-  CUR_ROUTE_PATH,
   LinkToOtherSystem,
   NOT_STICKY_HEADERS_LIST,
   TRANSPARENT_HEADER_LIST,
@@ -44,11 +43,10 @@ export default function Header(props: { locale?: I18N.LocaleType }) {
     if (props.params) {
       searchStr = new URLSearchParams({ ...props.params }).toString();
     }
-    const newHomePath = CUR_ROUTE_PATH;
     const isBlankLink = props.target === '_blank';
 
 
-    if (props.path && newHomePath.includes(props.path)) {
+    if (props.path) {
       if (isBlankLink) {
         return LinkToOtherSystem(props.path, props.target, searchStr);
       }

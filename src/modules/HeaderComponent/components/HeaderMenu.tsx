@@ -9,11 +9,12 @@ export default function HeaderMenu() {
   return (
     <div className="flex flex-shrink-0 h-full items-center gap-[40px]">
       <Logo
-        className="flex-shrink-0 w-[48px] h-[48px] atPhone:w-[44px] atPhone:h-[48px] cursor-pointer hover:opacity-[0.8]"
+        className="flex-shrink-0 h-[46px] cursor-pointer hover:opacity-[0.8]"
         onClick={() => {
           clickMenuCallBack?.({ path: '/' });
         }}
       />
+      {/* 未来其他菜单 */}
     </div>
   );
 }

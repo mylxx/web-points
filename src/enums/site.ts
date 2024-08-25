@@ -15,7 +15,7 @@ export enum SITE_THEME {
   DARK = 'dark',
 }
 
-export const HEADER_HIDDEN_PATH: string[] = ['/login'];
+export const HEADER_HIDDEN_PATH: string[] = [];
 
 // 需要登陆才能访问的 内部路由，没有登陆跳 内部 /
 export const INSIDE_LOGIN_VISIT_PATH: string[] = [];

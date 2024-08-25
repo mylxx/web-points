@@ -67,15 +67,15 @@ body {
 }
 
 h1 {
-  @apply font-chakra pc:text-[56px] pc:leading-[72px] atPad:text-[48px] atPad:leading-[64px] atPhone:text-[40px] atPhone:leading-[52px];
+  @apply font-chakra pc:text-[56px] pc:leading-[72px]  mobile:text-[40px] mobile:leading-[52px];
 }
 
 h2 {
-  @apply font-chakra pc:text-[48px] pc:leading-[64px] atPad:text-[40px] atPad:leading-[52px] atPhone:text-[32px] atPhone:leading-[44px];
+  @apply font-chakra pc:text-[48px] pc:leading-[64px]  mobile:text-[32px] mobile:leading-[44px];
 }
 
 h3 {
-  @apply font-chakra text-[36px] leading-[48px] atPhone:text-[28px] atPhone:leading-[36px];
+  @apply font-chakra text-[36px] leading-[48px] mobile:text-[28px] mobile:leading-[36px];
 }
 
 .common-hover-transition {

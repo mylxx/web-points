@@ -29,7 +29,9 @@ export default function LanguagePopover() {
         </div>
       }
     >
-      <LangIcon className="cursor-pointer w-[24px] common-hover-transition" />
+      <div className="cursor-pointer common-hover-transition bg-backGround flex items-center justify-center pc:w-[46px] pc:h-[46px] pc:rounded-[12px] mobile:w-[36px] mobile:h-[36px] mobile:rounded-[10px]">
+        <LangIcon className="pc:w-[28px] mobile:w-[22px]" />
+      </div>
     </Popover>
   );
 }

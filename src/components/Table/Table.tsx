@@ -166,19 +166,12 @@ function Table<T extends DataType>(props: Props<T>) {
     onRowClick = () => {},
   } = props;
   const [currentColumns, setcurrentColumns] = useState<ColumnType<T>[]>([]);
-  const { isPC, isPad, isPhone } = useScreenChecker();
-  const { pcColumns, padColumns, phoneColumns } = columns;
+  const { isPC, isPhone } = useScreenChecker();
+  const { pcColumns, phoneColumns } = columns;
 
   useEffect(() => {
     isPC && pcColumns && pcColumns?.length > 0 && setcurrentColumns(pcColumns);
   }, [isPC, pcColumns]);
-
-  useEffect(() => {
-    isPad &&
-      padColumns &&
-      padColumns?.length > 0 &&
-      setcurrentColumns(padColumns);
-  }, [isPad, padColumns]);
 
   useEffect(() => {
     isPhone &&

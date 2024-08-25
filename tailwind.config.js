@@ -19,14 +19,17 @@ module.exports = {
       },
     },
     screens: {
-      pc: { min: '1280px' },
-      ltPc: { max: '1279px' },
-      atPad: { min: '768px', max: '1279px' },
-      pad: { min: '768px' },
-      atPhone: { max: '767px' },
-      imgLg: { min: '1920px' },
-      imgMd: { max: '1919px', min: '1280px' },
-      imgSm: { max: '1279px', min: '768px' },
+      // 特殊情况就1个点
+      pc: { min: '998px' },
+      mobile: { max: '997px' },
+      // pc: { min: '1280px' },
+      // ltPc: { max: '1279px' },
+      // atPad: { min: '768px', max: '1279px' },
+      // pad: { min: '768px' },
+      // atPhone: { max: '767px' },
+      // imgLg: { min: '1920px' },
+      // imgMd: { max: '1919px', min: '1280px' },
+      // imgSm: { max: '1279px', min: '768px' },
     },
     extend: {
       colors: {

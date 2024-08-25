@@ -1,51 +1,40 @@
 'use client';
 
-import { Popover, Button } from 'antd';
-import AvtarIcon from '../assets/AvtarIcon.svg';
+import { Popover } from 'antd';
+import Logout from '../assets/Logout.svg';
 import Overstyle from '../style/overstyle.module.scss';
-import DrawerContainer from './DrawerContainer';
-import { useScreenChecker } from '@/hooks/useScreenChecker';
 import useTranslations from '@/hooks/useTranslations';
 import useHeaderConfig from '@/modules/HeaderComponent/hooks/useHeaderConfig';
 
 export default function PortfolioPopover() {
   const { userInfo, logout } = useHeaderConfig();
   const { t } = useTranslations();
-  const { isPC } = useScreenChecker();
 
   const Content = () => (
-    <div className="asset-popover-content px-[12px] pb-[16px] pt-[4px] pc:w-[296px] border-box">
-      <div className="flex gap-[24px] py-[16px] mb-[8px]">
-        <div>
-          <span className="text-titleText text-[24px] leading-[32px] font-chakra-600 break-all">
-            {userInfo?.username}
-          </span>
-        </div>
-      </div>
-      <Button
-        type="primary"
-        ghost
-        className="w-full mt-[20px] border-line hover:bg-blockPrimary"
+    <div className="asset-popover-content border-box">
+      <div
+        className="flex items-center gap-[10px] cursor-pointer common-hover-transition"
         onClick={() => logout?.()}
       >
-        {t('common.header.logOut')}
-      </Button>
+        <div className="bg-[#3E3E3E] flex items-center justify-center w-[24px] h-[24px] rounded-[24px]">
+          <Logout />
+        </div>
+        <div className="text-[14px]">{t('common.header.logOut')}</div>
+      </div>
     </div>
   );
 
-  return isPC ? (
+  return (
     <Popover
       overlayClassName={Overstyle['header-popover']}
       trigger={'hover'}
       content={<Content />}
+      arrow={false}
+      placement="bottomRight"
     >
-      <span className="cursor-pointer">
-        <AvtarIcon className="w-[24px] common-hover-transition" />
-      </span>
+      <div className="cursor-pointer common-hover-transition bg-backGround flex items-center justify-center pc:min-w-[204px] pc:h-[46px] pc:px-[32px] pc:rounded-[12px] pc: text-[16px] mobile:px-[6px] mobile:h-[36px] mobile:rounded-[10px] mobile:text-[12px]">
+        {userInfo?.username || 'y3wink@gmal.com'}
+      </div>
     </Popover>
-  ) : (
-    <DrawerContainer content={<Content />}>
-      <AvtarIcon className="w-[24px] cursor-pointer" />
-    </DrawerContainer>
   );
 }
