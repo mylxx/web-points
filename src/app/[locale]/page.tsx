@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="max-w-[1200px] box-border pc:px-[28px] pc:mx-auto pc:my-[159px] mobile:w-full mobile:px-[16px] mobile:my-[32px]">
       {/* <Tabs /> */}
-      <div className="flex gap-[16px]">
+      <div className="flex gap-[16px] mobile:hidden">
         <div className="flex-1 self-start flex flex-col gap-[30px]">
           <MyPoints />
           <Records />
@@ -15,6 +15,12 @@ function Home() {
           <PointsInfo />
           <HowToGet />
         </div>
+      </div>
+      <div className="flex flex-col gap-[30px] pc:hidden">
+        <MyPoints />
+        <PointsInfo />
+        <HowToGet />
+        <Records />
       </div>
     </div>
   );

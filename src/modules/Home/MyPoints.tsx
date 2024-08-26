@@ -31,7 +31,9 @@ export default function MyPoints() {
           </Tooltip>
         </div>
       ) : (
-        '- -'
+        <div className="flex items-center bg-backGround pc:min-h-[106px] py-[28px] px-[20px] rounded-[16px]">
+          - -
+        </div>
       )}
     </div>
   );
