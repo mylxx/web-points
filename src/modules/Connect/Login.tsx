@@ -17,7 +17,8 @@ interface FormValues {
 }
 const Login: React.FC = () => {
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
+  const [sendLoading, setSendLoading] = useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
   const [countdown, setCountdown] = useState(0);
   const [buttonEnable, setButtonEnable] = useState(false);
 
@@ -32,14 +33,14 @@ const Login: React.FC = () => {
       return;
     }
     // 模拟发送验证码的异步操作
-    setLoading(true);
+    setSendLoading(true);
     setCountdown(30); // 假设倒计时30秒
     form.resetFields(['code']); // 重置验证码字段
     const intervalId = window.setInterval(() => {
       setCountdown((prevCountdown) => {
         if (prevCountdown <= 1) {
           clearInterval(intervalId);
-          setLoading(false);
+          setSendLoading(false);
           return 0;
         }
         return prevCountdown - 1;
@@ -51,6 +52,7 @@ const Login: React.FC = () => {
 
   const handleFinish = async (values: FormValues) => {
     // 这里应调用后端API进行登录
+    setSubmitLoading(true);
     goLogin({ ...values })
       .then((res) => {
         const { code } = res;
@@ -61,7 +63,8 @@ const Login: React.FC = () => {
       })
       .catch(() => {
         setIsLogin(false);
-      });
+      })
+      .finally(() => setSubmitLoading(false));
     console.log('Received values from form: ', values);
     message.success('登录成功！');
   };
@@ -70,7 +73,7 @@ const Login: React.FC = () => {
     setButtonEnable(allSettled);
   };
   return (
-    <div className="w-full max-w-[460px] bg-backGround rounded-[16px] px-[24px]">
+    <div className="w-full max-w-[460px] bg-backGround rounded-[16px] pc:px-[24px] mobile:px-[12px]  pb-[8px]">
       <div className="text-titleText text-[18px] font-500 py-[18px] border-b-[#454549] border-b-[1px] border-b-solid mb-[24px]">
         Login
       </div>
@@ -94,6 +97,7 @@ const Login: React.FC = () => {
         onFinish={handleFinish}
       >
         <Item
+          className="!mb-[32px]"
           name="email"
           label="Email"
           rules={[
@@ -108,44 +112,50 @@ const Login: React.FC = () => {
           ]}
           validateTrigger="onBlur"
         >
-          <Input placeholder="contact_placeholder" maxLength={200} />
+          <Input
+            placeholder="contact_placeholder"
+            maxLength={200}
+            className="h-[54px] rounded-[12px]"
+          />
         </Item>
         <Item
           shouldUpdate={(prevValues, currentValues) =>
             prevValues.email !== currentValues.email
           }
-          className="mt-[32px]"
+          className="!mb-[8px]"
         >
           {() => (
-            <div className="w-full flex items-end justify-between gap-[16px]">
+            <div className="w-full relative">
               <Item
-                className="flex-1 w-full"
+                className="w-full"
                 name="code"
                 label="Verify Code"
                 rules={[{ required: true, message: '请输入验证码!' }]}
               >
-                <Input />
+                <Input className="h-[54px] rounded-[12px]" />
               </Item>
-              <Item className="shrink-0 mt-[16px]">
+              <Item className="absolute right-[10px] top-[38px]">
                 <Button
                   type="primary"
                   size="small"
                   onClick={handleSendCode}
-                  disabled={!form.getFieldValue('email')}
-                  loading={loading}
+                  disabled={!form.getFieldValue('email') || sendLoading}
+                  // loading={loading}
+                  className="!h-[28px] !px-[16px] !rounded-[6px]"
                 >
-                  {countdown > 0 ? `${countdown}秒后重发` : '发送验证码'}
+                  {countdown > 0 ? `${countdown}s` : 'send'}
                 </Button>
               </Item>
             </div>
           )}
         </Item>
-        <Item className="mt-[32px]">
+        <Item>
           <Button
             type="primary"
             htmlType="submit"
             block
             disabled={!buttonEnable}
+            loading={submitLoading}
           >
             登录
           </Button>

@@ -1,9 +1,10 @@
 import Login from '@/modules/Connect/Login';
+
 export default function Connect() {
   return (
     <div
-      style={{ height: 'calc(100vh - 60px)' }}
-      className="flex items-center justify-center calc:h-100vh-60px w-[full]"
+      style={{ height: `calc(100vh - 60px)` }}
+      className="flex pc:items-center justify-center w-[full] mobile:px-[12px] mobile:mt-[110px] mobile:!h-auto"
     >
       <Login />
     </div>

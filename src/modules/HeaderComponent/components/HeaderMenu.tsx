@@ -9,7 +9,7 @@ export default function HeaderMenu() {
   return (
     <div className="flex flex-shrink-0 h-full items-center gap-[40px]">
       <Logo
-        className="flex-shrink-0 h-[46px] cursor-pointer hover:opacity-[0.8]"
+        className="flex-shrink-0 pc:h-[46px] mobile:h-[28px] cursor-pointer hover:opacity-[0.8]"
         onClick={() => {
           clickMenuCallBack?.({ path: '/' });
         }}

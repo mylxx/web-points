@@ -13,7 +13,7 @@ export default function MyPoints() {
 
   return (
     <div className="w-full">
-      <div className="px-[20px] text-titleText pc:text-[24px] pc:mb-[24px] mobile:text-[20px] mobile:mb-[20px]">
+      <div className="px-[20px] text-titleText font-500 pc:text-[24px] pc:mb-[20px] mobile:text-[20px] mobile:mb-[10px]">
         My Points
       </div>
       {!isLogin ? (

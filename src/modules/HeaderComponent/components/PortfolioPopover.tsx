@@ -34,7 +34,7 @@ export default function PortfolioPopover() {
       arrow={false}
       placement="bottomRight"
     >
-      <div className="cursor-pointer text-titleText common-hover-transition bg-backGround flex items-center justify-center pc:min-w-[204px] pc:h-[46px] pc:px-[32px] pc:rounded-[12px] pc: text-[16px] mobile:px-[6px] mobile:h-[36px] mobile:rounded-[10px] mobile:text-[12px]">
+      <div className="cursor-pointer text-titleText common-hover-transition bg-backGround flex items-center justify-center pc:min-w-[204px] pc:h-[46px] pc:px-[32px] pc:rounded-[12px] pc: text-[16px] mobile:px-[6px] mobile:h-[32px] mobile:rounded-[8px] mobile:text-[12px]">
         {userInfo?.username || 'y3wink@gmal.com'}
       </div>
     </Popover>

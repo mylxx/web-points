@@ -81,3 +81,12 @@ h3 {
 .common-hover-transition {
   @apply transition duration-100 hover:opacity-[0.8];
 }
+.gradient-border {
+  border-color: transparent;
+  border-style: solid;
+  border-radius: 16px;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  background-image: linear-gradient(to right, #222, #222),
+    linear-gradient(90deg, #c20ed7, #292fe1);
+}

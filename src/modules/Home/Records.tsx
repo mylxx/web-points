@@ -45,12 +45,12 @@ export default function Records() {
   ];
   return (
     <div className="w-full">
-      <div className="px-[20px]  pc:text-[24px] pc:mb-[24px] mobile:text-[20px] mobile:mb-[20px]">
+      <div className="px-[20px] text-titleText font-500  pc:text-[24px] pc:mb-[20px] mobile:text-[20px] mobile:mb-[10px]">
         Record
       </div>
       {!isLogin ? (
-        <div>
-          <div className="bg-backGround pc:min-h-[106px] rounded-[16px]">
+        <div className="overflow-x-auto">
+          <div className="bg-backGround pc:min-h-[106px] rounded-[16px] mobile:min-w-[600px]">
             {/* header */}
             <div className="flex gap-[8px] flex-nowrap items-center px-[32px] py-[14px]">
               <div className="text-[14px] text-descriptionText text-left w-[20%]">
