@@ -4,14 +4,10 @@ import { getHTTPHeaderLocale } from '@/utils/i18nUtils';
 import { message } from '@/utils/messageNexus';
 import { removeLocalToken } from '@/utils/tokenUtils';
 import { isDev, isServer } from '@/utils/utils';
-import { RESPONSE_CODE, RESPONSE_TYPE } from '@/enums/request';
+import { RESPONSE_CODE } from '@/enums/request';
 import { loginState } from '@/store';
 
-export interface Config extends CreateAxiosDefaults {
-  handleResponseType?: RESPONSE_TYPE;
-}
-
-const createRequest = (config: Config = {}) => {
+const createRequest = (config: CreateAxiosDefaults = {}) => {
   const { ...restConfig } = config;
   const ins = axios.create(Object.assign({}, restConfig));
   ins.interceptors.request.use((config) => {
@@ -52,7 +48,11 @@ const createRequest = (config: Config = {}) => {
 };
 
 export default {
-  get<R, T = Record<string, any>>(url: string, params?: T, config?: Config) {
+  get<R, T = Record<string, any>>(
+    url: string,
+    params?: T,
+    config?: CreateAxiosDefaults,
+  ) {
     // console.log('get request', url, params);
     return createRequest(config).get<unknown, API.ResponseBody<R>>(url, {
       params,
@@ -61,16 +61,20 @@ export default {
   post<R, T = Record<string, string>>(
     url: string,
     params?: T,
-    config?: Config,
+    config?: CreateAxiosDefaults,
   ) {
     // console.log('post request', url, params);
     return createRequest(config).post<never, API.ResponseBody<R>>(url, params);
   },
-  put<R, T = Record<string, string>>(url: string, params?: T, config?: Config) {
+  put<R, T = Record<string, string>>(
+    url: string,
+    params?: T,
+    config?: CreateAxiosDefaults,
+  ) {
     // console.log('put request', url, params);
     return createRequest(config).put<never, API.ResponseBody<R>>(url, params);
   },
-  delete<R>(url: string, config?: Config) {
+  delete<R>(url: string, config?: CreateAxiosDefaults) {
     // console.log('delete request', url);
     return createRequest(config).delete<never, API.ResponseBody<R>>(url);
   },

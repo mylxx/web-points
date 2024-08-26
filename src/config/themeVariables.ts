@@ -53,7 +53,7 @@ const themeVariables = {
     '--subtitle-text': '#75828A',
     '--description-text': '#5D5D61',
     '--hint-text': '#3D484D',
-    '--line': '#252D32',
+    '--line': '#dcdcdc', // 按钮disabled
     '--dark-ground': '#1C262C',
     '--front-ground': '#111111',
     '--back-ground': '#2F2F33',

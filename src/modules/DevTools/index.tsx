@@ -11,7 +11,6 @@ import { isLocalProxy } from '@/utils/envChecker';
 import { I18N_LOCALES } from '@/enums/i18n';
 import useChangeLocale from '@/hooks/useChangeLocale';
 import { useTheme } from '@/hooks/useTheme';
-import mock from '@/mock';
 
 const { Group } = FloatButton;
 const localeMap: Record<I18N.LocaleType, string> = {
@@ -23,18 +22,6 @@ const localeMap: Record<I18N.LocaleType, string> = {
 export default function DevTools() {
   const { changeLocale, currentLocale } = useChangeLocale();
   const { theme, toggleTheme } = useTheme();
-
-  if (
-    // CSR
-    typeof window !== 'undefined' &&
-    // XHR未被劫持
-    // @ts-ignore
-    !window.XMLHttpRequest.Mock &&
-    // 非本地代理
-    !isLocalProxy()
-  ) {
-    mock();
-  }
 
   return (
     <>

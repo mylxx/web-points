@@ -1,9 +1,9 @@
 import request from '@/utils/request';
 import API from './api';
-import { RESPONSE_TYPE } from '@/enums/request';
 
-export const getUserAccount = () => {
-  return request.get<any>(API.USER_ACCOUNT, undefined, {
-    handleResponseType: RESPONSE_TYPE.WITH_STATUS,
-  });
+export const getUserAccount = (data?: any) => {
+  return request.get<any>(API.USER_ACCOUNT, data);
+};
+export const goLogin = (data: any) => {
+  return request.post<any>(API.LOG_IN, data);
 };

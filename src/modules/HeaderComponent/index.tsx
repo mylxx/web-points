@@ -12,7 +12,7 @@ export default function Header(props: HeaderProps) {
   return (
     <HeaderProvider {...props}>
       <div
-        className={`layout-header top-0 left-0 w-full h-[64px] z-[99] ${sticky !== false ? 'sticky' : ''} ${isTransparentBg ? 'bg-transparent' : 'bg-frontGround'}`}
+        className={`layout-header top-0 left-0 w-full h-[60px] z-[99] ${sticky !== false ? 'sticky' : ''} ${isTransparentBg ? 'bg-transparent' : 'bg-frontGround'}`}
       >
         <header className="w-full h-full flex items-center justify-between box-border px-[28px] mobile:px-[16px]">
           <HeaderMenu />

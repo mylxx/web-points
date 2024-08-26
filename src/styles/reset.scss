@@ -24,3 +24,25 @@
 .ant-pagination-item:hover a {
   border-color: #262626; /* 悬浮状态的边框颜色 */
 }
+
+/* 覆盖 Input 边框颜色 */
+.ant-input-outlined {
+  background: #999;
+  border: none;
+}
+
+/* 覆盖 Input 获得焦点时的边框颜色 */
+.ant-input-outlined:focus {
+  border-color: #999; /* 你希望的聚焦颜色 */
+  box-shadow: none;
+}
+
+/* 覆盖 Input 禁用状态的边框颜色 */
+.ant-input-outlined[disabled] {
+  border-color: #f5f5f5; /* 你希望的禁用颜色 */
+}
+
+/* 覆盖 Input 状态为 hover 时的边框颜色 */
+.ant-input-outlined:hover {
+  border-color: #999; /* 你希望的 hover 颜色 */
+}
