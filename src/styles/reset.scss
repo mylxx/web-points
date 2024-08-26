@@ -27,22 +27,22 @@
 
 /* 覆盖 Input 边框颜色 */
 .ant-input-outlined {
-  background: #999;
+  background: #454549;
   border: none;
 }
 
 /* 覆盖 Input 获得焦点时的边框颜色 */
 .ant-input-outlined:focus {
-  border-color: #999; /* 你希望的聚焦颜色 */
+  border-color: #454549; /* 你希望的聚焦颜色 */
   box-shadow: none;
 }
 
 /* 覆盖 Input 禁用状态的边框颜色 */
 .ant-input-outlined[disabled] {
-  border-color: #f5f5f5; /* 你希望的禁用颜色 */
+  border-color: #8a8b8d; /* 你希望的禁用颜色 */
 }
 
 /* 覆盖 Input 状态为 hover 时的边框颜色 */
 .ant-input-outlined:hover {
-  border-color: #999; /* 你希望的 hover 颜色 */
+  border-color: #454549; /* 你希望的 hover 颜色 */
 }
