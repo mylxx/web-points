@@ -15,8 +15,8 @@ import { useTheme } from '@/hooks/useTheme';
 const { Group } = FloatButton;
 const localeMap: Record<I18N.LocaleType, string> = {
   en: '英',
-  'zh-Hans': '简',
-  'zh-Hant': '繁',
+  'zh-CN': '简',
+  'zh-HK': '繁',
   'dev-lang': 'key',
 };
 export default function DevTools() {

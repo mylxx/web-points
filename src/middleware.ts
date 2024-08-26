@@ -29,7 +29,7 @@ export default function cusMiddlewareFn(request: NextRequest) {
     )
   ) {
     const newPathname = request.nextUrl.pathname.replace(
-      /\/(en|zh-Hant|zh-Hans)/,
+      /\/(en|zh-HK|zh-CN)/,
       '',
     );
 
@@ -49,7 +49,7 @@ export const config = {
 
     // Set a cookie to remember the previous locale for
     // all requests that have a locale prefix
-    '/(en|zh-Hant|zh-Hans|dev-lang)/:path*',
+    '/(en|zh-HK|zh-CN|dev-lang)/:path*',
 
     // Enable redirects that add missing locales
     // (e.g. `/pathnames` -> `/en/pathnames`)

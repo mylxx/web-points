@@ -3,5 +3,7 @@
   "common.header.register": "注册",
   "common.header.logOut": "登出",
   "common.error.description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
+  "common.pendding_page": "页面正在进入，请稍候...",
+  "common.no_permission_page": "访问的页面需要登陆，正在为您跳转到登陆...",
   "markets.table.noData": "暂无数据"
 }

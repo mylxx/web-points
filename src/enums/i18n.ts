@@ -4,7 +4,7 @@ export const I18N_STORE_KEY = 'NEXT_LOCALE';
 
 export const PLATFORM_UI_I18N_STORE_KEY = 'locale';
 
-export const languageList = ['en', 'zh-Hans', 'zh-Hant', 'dev-lang'] as const;
+export const languageList = ['en', 'zh-CN', 'zh-HK', 'dev-lang'] as const;
 export const I18N_LOCALES = languageList;
 export const localeCookie = ['en_US', 'zh_HK', 'zh_CN'] as const;
 

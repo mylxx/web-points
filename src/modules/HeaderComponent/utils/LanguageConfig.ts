@@ -14,13 +14,13 @@ export const LanguageMenu: LanguageMenuType[] = [
   },
   {
     label: '中文(简体)',
-    key: 'zh-Hans',
+    key: 'zh-CN',
     icon: '',
     path: '',
   },
   {
     label: '中文(繁體)',
-    key: 'zh-Hant',
+    key: 'zh-HK',
     icon: '',
     path: '',
   },

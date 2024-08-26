@@ -6,13 +6,13 @@ type AbstractIntlMessages = {
 };
 
 const localEn = import('../locales/en.json');
-const localZhHant = import('../locales/zh-Hant.json');
-const localZhHans = import('../locales/zh-Hans.json');
+const localZhHant = import('../locales/zh-HK.json');
+const localZhHans = import('../locales/zh-CN.json');
 const localJSONMap = {
   en: localEn,
   'dev-lang': Promise.resolve({ default: {} }),
-  'zh-Hans': localZhHans,
-  'zh-Hant': localZhHant,
+  'zh-CN': localZhHans,
+  'zh-HK': localZhHant,
 };
 
 export async function getMessages(locale: I18N.LocaleType) {

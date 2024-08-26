@@ -14,8 +14,8 @@ export const getCookieLocale = () => {
 export const getServerLocale = (locale: I18N.LocaleType = 'en') => {
   const localeMap: Record<I18N.LocaleType, 'en_US' | 'zh_CN' | 'zh_HK'> = {
     en: 'en_US',
-    'zh-Hans': 'zh_CN',
-    'zh-Hant': 'zh_HK',
+    'zh-CN': 'zh_CN',
+    'zh-HK': 'zh_HK',
     'dev-lang': 'en_US',
   };
   return localeMap[locale];
@@ -25,8 +25,8 @@ export const getServerLocale = (locale: I18N.LocaleType = 'en') => {
 export const getPlateFormUILocale = (locale: LocaleCookieTypeUnio) => {
   const localeMap: Record<LocaleCookieTypeUnio, string> = {
     en_US: 'en',
-    zh_CN: 'zh-Hans',
-    zh_HK: 'zh-Hant',
+    zh_CN: 'zh-CN',
+    zh_HK: 'zh-HK',
   };
   return localeMap[locale || 'en_US'];
 };

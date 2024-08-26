@@ -7,11 +7,11 @@ const zhHantDescription = 'zhHansDescription';
 const enDescription = 'zhHansDescription';
 
 export default {
-  'zh-Hant': {
+  'zh-HK': {
     title: '',
     description: zhHantDescription,
   },
-  'zh-Hans': {
+  'zh-CN': {
     title: '',
     description: zhHansDescription,
   },
@@ -30,11 +30,11 @@ export type TypeGenerateMetadata = {
 };
 
 export const downloadMeta = {
-  'zh-Hant': {
+  'zh-HK': {
     title: '',
     description: '',
   },
-  'zh-Hans': {
+  'zh-CN': {
     title: '',
     description: '',
   },
@@ -49,11 +49,11 @@ export const downloadMeta = {
 };
 
 export const otcMeta = {
-  'zh-Hant': {
+  'zh-HK': {
     title: '',
     description: zhHantDescription,
   },
-  'zh-Hans': {
+  'zh-CN': {
     title: '',
     description: zhHansDescription,
   },
