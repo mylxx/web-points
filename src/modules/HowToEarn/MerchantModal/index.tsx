@@ -75,6 +75,7 @@ export default forwardRef<MODAL.ModalActions>(
                 width={416}
                 closable={false}
                 footer={null}
+                destroyOnClose={true}
             >
                 <div>
                     <div className="flex justify-center items-center h-[46px] gap-[16px]">
