@@ -46,3 +46,51 @@
 .ant-input-outlined:hover {
   border-color: #454549; /* 你希望的 hover 颜色 */
 }
+
+.ant-select {
+  /* 覆盖Select选择器的基本样式 */
+  .ant-select-selector {
+    background-color: #454549;
+    border: none;
+    border-radius: 6px;
+  }
+
+  /* 覆盖Select选择器的聚焦样式 */
+  .ant-select-focused .ant-select-selection,
+  .ant-select-selection:focus,
+  .ant-select-selection:active {
+    border: none; /* 聚焦时的边框颜色 */
+    box-shadow: none; /* 聚焦时的阴影效果 */
+  }
+
+  /* 覆盖Select下拉菜单的样式 */
+  .ant-select-dropdown {
+    background-color: #454549; /* 设置下拉菜单的背景颜色 */
+    border-color: #454549; /* 设置下拉菜单的边框颜色 */
+    border-radius: 12px; /* 重置下拉菜单的边框圆角 */
+    box-shadow: none; /* 移除下拉菜单的阴影 */
+  }
+  .ant-select-dropdown {
+    background-color: #fff; /* 背景色 */
+  }
+  .ant-select-dropdown-menu-item:hover {
+    background-color: rgba(132, 63, 255, 0.4); /* 鼠标悬停效果 */
+  }
+
+  /* 覆盖下拉菜单中的选项样式 */
+  .ant-select-dropdown-menu-item {
+    color: #fff; /* 设置选项文本颜色 */
+  }
+
+  /* 覆盖选中的下拉菜单选项样式 */
+  .ant-select-dropdown-menu-item-selected {
+    background-color: #e6f7ff;
+  }
+
+  /* 覆盖Select组件禁用状态的样式 */
+  /* .ant-select-disabled {
+  background-color: #f5f5f5; 
+  border-color: #d9d9d9; 
+  color: #ccc; 
+} */
+}

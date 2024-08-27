@@ -1,0 +1,18 @@
+/* 自定义分页组件的颜色 */
+.ant-pagination-item-active {
+  border-color: #262626; /* 激活状态的边框颜色 */
+}
+.ant-pagination-item-active a {
+  color: #ffffff; /* 激活状态的文本颜色 */
+  border-color: #262626; /* 激活状态的边框颜色 */
+}
+
+.ant-pagination-item a {
+  border-color: #262626; /* 默认状态的边框颜色 */
+}
+
+.ant-pagination-prev:hover .ant-pagination-item-link,
+.ant-pagination-next:hover .ant-pagination-item-link,
+.ant-pagination-item:hover a {
+  border-color: #262626; /* 悬浮状态的边框颜色 */
+}

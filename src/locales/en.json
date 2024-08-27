@@ -1,4 +1,5 @@
 {
+  "common.input.search": "Search",
   "common.header.login": "Connect",
   "common.header.register": "Sign Up",
   "common.header.logOut": "Log Out",

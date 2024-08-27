@@ -23,7 +23,7 @@ export default function Header(props: HeaderProps) {
               onClick={() => window?.open('www.baid.com', '_blank')}
             >
               <div className="flex justify-center items-center pc:gap-[10px] pc:px-[24px] pc:rounded-[12px] mobile:gap-[2px] mobile:px-[12px] mobile:rounded-[8px] h-full bg-backGround">
-                <span>Payment IDs</span>
+                <span className='text-titleText pc:text-[16px] mobile:text-[12px]'>Payment IDs</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="10"

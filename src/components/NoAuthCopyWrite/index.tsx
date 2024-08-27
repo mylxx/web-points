@@ -23,13 +23,13 @@ const NoAuthCopyWrite = (props: TypeProps) => {
   return (
     <>
       {unlogged && (
-        <div className="flex justify-center items-center min-h-[400px] text-[--title-text] text-fs16 atPhone:p-[40px]">
+        <div className="flex justify-center items-center min-h-[400px] text-[--title-text] text-fs16 mobile:p-[40px]">
           {t('common.no_permission_page')}
         </div>
       )}
       {logged && props.children}
       {loginPending && (
-        <div className="flex justify-center items-center min-h-[400px] text-[--title-text] text-fs16 atPhone:p-[40px]">
+        <div className="flex justify-center items-center min-h-[400px] text-[--title-text] text-fs16 mobile:p-[40px]">
           {t('common.pendding_page')}
         </div>
       )}

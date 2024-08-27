@@ -1,28 +1,28 @@
 .ant-modal-root {
   .ant-modal-wrap {
-    @apply atPhone:overflow-hidden atPhone:bottom-0 atPhone:top-auto;
+    @apply mobile:overflow-hidden mobile:bottom-0 mobile:top-auto;
   }
 
   .ant-modal {
-    @apply atPhone:max-w-[100vw] atPhone:pb-0 atPhone:top-auto atPhone:m-0;
+    @apply mobile:max-w-[100vw] mobile:pb-0 mobile:top-auto mobile:m-0;
 
     .ant-modal-content {
-      @apply p-0 atPhone:max-h-[calc(100vh-44px)] atPhone:flex atPhone:flex-col bg-frontGround;
+      @apply p-0 mobile:max-h-[calc(100vh-44px)] pc:!rounded-[16px] mobile:flex mobile:flex-col bg-transparent;
 
       .ant-modal-close {
         @apply top-[32px] right-[24px] text-descriptionText;
       }
 
       .ant-modal-header {
-        @apply px-[24px] pt-[32px] pb-[8px] mb-0 atPhone:pb-[6px] bg-transparent;
+        @apply px-[24px] pt-[32px] pb-[8px] mb-0 mobile:pb-[6px] bg-transparent;
       }
 
       .ant-modal-body {
-        @apply px-[24px] py-[16px] overflow-auto;
+        @apply p-0 overflow-auto;
       }
 
       .ant-modal-footer {
-        @apply px-[24px] pt-[16px] pb-[32px] atPhone:py-[16px] mt-0;
+        @apply px-[24px] pt-[16px] pb-[32px] mobile:py-[16px] mt-0;
       }
     }
   }
