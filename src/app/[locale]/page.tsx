@@ -6,22 +6,27 @@ function Home() {
   return (
     <div className="max-w-[1200px] box-border pc:px-[28px] pc:mx-auto pc:my-[159px] mobile:w-full mobile:px-[16px] mobile:my-[32px]">
       {/* <Tabs /> */}
-      <div className="flex gap-[16px] mobile:hidden">
-        <div className="flex-1 self-start flex flex-col gap-[30px]">
+      <div className="flex pc:gap-[16px] mobile:flex-col mobile:gap-[30px]">
+        <div className="pc:flex-1 pc:self-start mobile:w-full flex flex-col gap-[30px]">
           <MyPoints />
-          <Records />
+          <div className="mobile:hidden">
+            <Records />
+          </div>
         </div>
-        <div className="w-[35%] max-w-[436px] self-start flex flex-col gap-[30px]">
+        <div className="pc:w-[35%] pc:max-w-[436px] pc:self-start mobile:w-full flex flex-col gap-[30px]">
           <PointsInfo />
           <HowToGet />
+          <div className="pc:hidden">
+            <Records />
+          </div>
         </div>
       </div>
-      <div className="flex flex-col gap-[30px] pc:hidden">
+      {/* <div className="flex flex-col gap-[30px] pc:hidden">
         <MyPoints />
         <PointsInfo />
         <HowToGet />
         <Records />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -50,7 +50,7 @@ export default function Records() {
       </div>
       {!isLogin ? (
         <div className="overflow-x-auto">
-          <div className="bg-backGround pc:min-h-[106px] rounded-[16px] mobile:min-w-[600px]">
+          <div className="bg-backGround pc:min-h-[320px] rounded-[16px] mobile:min-w-[600px]">
             {/* header */}
             <div className="flex gap-[8px] flex-nowrap items-center px-[32px] py-[14px]">
               <div className="text-[14px] text-descriptionText text-left w-[20%]">
@@ -68,7 +68,7 @@ export default function Records() {
             </div>
             {/* body */}
             <div>
-              {list.length ? (
+              {!list.length ? (
                 list.map((item, index) => (
                   <div
                     key={index}
@@ -89,7 +89,9 @@ export default function Records() {
                   </div>
                 ))
               ) : (
-                <DefDraw />
+                <div className="flex justify-center items-center min-h-[250px]">
+                  <DefDraw />
+                </div>
               )}
             </div>
           </div>
