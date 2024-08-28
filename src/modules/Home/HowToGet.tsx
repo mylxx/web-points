@@ -27,7 +27,8 @@ export default function HowToGet() {
     {
       title: 'Scan to Earn',
       icon: <ScanToEarn />,
-      path: '/howtoearn',
+      // path: '/earn',
+      path: '/earn11',
       self: true,
     },
     {
