@@ -107,8 +107,8 @@ export default forwardRef<MODAL.ModalActions, any>(
                             What can not be accepted: human / natural view etc.
                         </div>
                     </div>
-                    <div className='flex gap-[10px] pc:mb-[16px] mobile:mb-[30px]'>
-                        <Upload {...uploadProps} className="w-[50%]">
+                    <div className='flex gap-[10px] pc:mb-[16px] mobile:mb-[30px] mobile:flex-col'>
+                        <Upload {...uploadProps} className="w-[50%] mobile:w-full mobile:order-2">
                             <Button
                                 className="w-full h-[54px]  text-[#8A8B8D] bg-transparent border-[#8A8B8D]"
                                 size="large"
@@ -117,7 +117,7 @@ export default forwardRef<MODAL.ModalActions, any>(
                             </Button>
                         </Upload>
                         <Button
-                            className="w-[50%] h-[54px]"
+                            className="w-[50%] h-[54px] mobile:w-full mobile:order-1"
                             type="primary"
                             size="large"
                             onClick={goUpload}
