@@ -193,7 +193,8 @@ export default forwardRef<MODAL.ModalActions>(
                                         className="h-[54px] rounded-[12px]"
                                     />
                                 </Item>
-                                <UploadBtn formIns={formIns} />
+
+                                <UploadBtn formIns={formIns} hideModal={hideModal} />
                             </Form>
                         </ConfigProvider>
                     </div>
