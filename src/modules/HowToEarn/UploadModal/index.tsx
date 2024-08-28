@@ -7,13 +7,15 @@ import Modal from '@/components/Modal';
 import SVGWrapper from '@/components/SVGWrapper';
 import CloseIcon from '@/assets/images/common/CloseIcon.svg';
 import MarkIcon from '@/assets/images/common/MarkIcon.svg';
-import useTranslations from '@/hooks/useTranslations';
+import './index.scss';
+
+// import useTranslations from '@/hooks/useTranslations';
 
 export default forwardRef<MODAL.ModalActions, any>(
     function UploadModal(props, ref) {
         const [open, setOpen] = useState(false);
-        const { t } = useTranslations();
-        const { previewSrc, fileInfo, isSkip, handleBeforeUpload } = props
+        // const { t } = useTranslations();
+        const { isSkip, formInfo, previewSrc, fileInfo, resetPreviewSrc, resetFileInfo } = props
         const showModal = () => {
             setOpen(true);
         };
@@ -26,18 +28,47 @@ export default forwardRef<MODAL.ModalActions, any>(
             showModal,
             hideModal,
         }));
+
+        // reSelected 重新上传相关-start
+        const handleBeforeUpload = (file: File) => {
+            // 检查文件类型和大小  
+            const isLt30M = file.size / 1024 / 1024 < 30;
+            if (!isLt30M) {
+                message.error('图片大小不能超过 30MB!');
+                return false;
+            }
+
+            const isImageOrPdf =
+                file.type === 'image/jpeg' ||
+                file.type === 'image/png' ||
+                file.type === 'image/bmp' ||
+                file.type === 'application/pdf';
+            if (!isImageOrPdf) {
+                message.error('文件类型必须为 JPG, PNG, BMP 或 PDF!');
+                return false;
+            }
+            // 生成预览链接  
+            const preview = URL.createObjectURL(file);
+            // 去父组件重置图片信息
+            resetPreviewSrc(preview);
+            resetFileInfo(file)
+            return false;
+        };
         const uploadProps: UploadProps = {
             name: 'file',
             listType: 'text',
-            className: 'avatar-uploader',
+            className: 'reset-merchant-bill-uploader',
             showUploadList: false,
             beforeUpload: handleBeforeUpload,
         };
+        // reSelected 重新上传相关-end
 
+        // Confirm upload
         const goUpload = () => {
             console.log('previewSrc', previewSrc)
             console.log('isSkip', isSkip)
             console.log('fileInfo', fileInfo)
+            console.log('formInfo', formInfo)
         }
         return (
             <Modal
@@ -77,9 +108,9 @@ export default forwardRef<MODAL.ModalActions, any>(
                         </div>
                     </div>
                     <div className='flex gap-[10px] pc:mb-[16px] mobile:mb-[30px]'>
-                        <Upload {...uploadProps} className="w-full">
+                        <Upload {...uploadProps} className="w-[50%]">
                             <Button
-                                className="w-[50%] h-[54px]  text-[#8A8B8D] bg-transparent border-[#8A8B8D]"
+                                className="w-full h-[54px]  text-[#8A8B8D] bg-transparent border-[#8A8B8D]"
                                 size="large"
                             >
                                 Reselect

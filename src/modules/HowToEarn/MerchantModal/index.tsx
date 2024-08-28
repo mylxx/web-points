@@ -5,10 +5,14 @@ import { Form, Divider, ConfigProvider, Select } from 'antd';
 import Input from '@/components/Input';
 import Modal from '@/components/Modal';
 import SVGWrapper from '@/components/SVGWrapper';
-import UploadBtn from '../UploadBtn';
+// import UploadBtn from '../UploadBtn';
 import CloseIcon from '@/assets/images/common/CloseIcon.svg';
 import RoundedLogo from '@/assets/images/howToEarn/RoundedLogo.svg';
 import useTranslations from '@/hooks/useTranslations';
+import { Upload, message, Button } from 'antd';
+import { UploadProps } from 'antd/es/upload';
+import './index.scss';
+
 const { Item } = Form;
 const { Option } = Select;
 interface Country {
@@ -40,19 +44,19 @@ const initialCountries: Country[] = [
         ],
     },
 ];
-export default forwardRef<MODAL.ModalActions>(
+export default forwardRef<MODAL.ModalActions, any>(
     function MerchantModal(props, ref) {
+        const { showUploadModal } = props
         const [open, setOpen] = useState(false);
-        const [currentCountry, setCurrentCountry] = useState<Country | null>(null);
         const { t } = useTranslations();
         const [formIns] = Form.useForm();
+        const [isSkip, setIsSkip] = useState(0)
         const showModal = () => {
             setOpen(true);
         };
 
         const hideModal = () => {
             setOpen(false);
-            setCurrentCountry(null);
         };
 
         useImperativeHandle(ref, () => ({
@@ -60,10 +64,40 @@ export default forwardRef<MODAL.ModalActions>(
             hideModal,
         }));
 
-        const handleCountryChange = (value: string) => {
-            const city = initialCountries.find((c) => c.id === value) || null;
-            setCurrentCountry(city);
+        const handleBeforeUpload = (file: File) => {
+            // 检查文件类型和大小  
+            const isLt30M = file.size / 1024 / 1024 < 30;
+            if (!isLt30M) {
+                message.error('图片大小不能超过 30MB!');
+                return false;
+            }
+
+            const isImageOrPdf =
+                file.type === 'image/jpeg' ||
+                file.type === 'image/png' ||
+                file.type === 'image/bmp' ||
+                file.type === 'application/pdf';
+            if (!isImageOrPdf) {
+                message.error('文件类型必须为 JPG, PNG, BMP 或 PDF!');
+                return false;
+            }
+            // 生成预览链接  
+            const preview = URL.createObjectURL(file);
+            // 获取表单信息
+            formIns.validateFields().then((formInfo: any) => {
+                showUploadModal(preview, file, isSkip, formInfo)
+            })
+            return false;
         };
+        // 上传配置
+        const uploadProps: UploadProps = {
+            name: 'file',
+            listType: 'text',
+            className: 'merchant-bill-uploader',
+            showUploadList: false,
+            beforeUpload: handleBeforeUpload,
+        };
+
         return (
             <Modal
                 open={open}
@@ -117,9 +151,10 @@ export default forwardRef<MODAL.ModalActions>(
                                     );
                                 }}
                             >
+                                {/*  */}
                                 <Item name="merId" label="Enter merchant PID">
                                     <Input
-                                        placeholder="contact_placeholder"
+                                        placeholder="Please enter the merchant PID"
                                         className="h-[54px] rounded-[12px]"
                                     />
                                 </Item>
@@ -129,7 +164,7 @@ export default forwardRef<MODAL.ModalActions>(
                                 <div className="text-titleText text-[18px] font-500 pt-[4px]">
                                     Fill in merchant information
                                 </div>
-
+                                {/* 国家 */}
                                 <Item
                                     name="country"
                                     label={
@@ -145,7 +180,6 @@ export default forwardRef<MODAL.ModalActions>(
                                                 .includes(input.toLowerCase())
                                         }
                                         placeholder="Please select a country"
-                                        onChange={handleCountryChange}
                                         className="h-[54px]"
                                     >
                                         {initialCountries.map((city) => (
@@ -155,31 +189,16 @@ export default forwardRef<MODAL.ModalActions>(
                                         ))}
                                     </Select>
                                 </Item>
-                                <Item
-                                    name="City"
-                                    label={
-                                        <span className="text-titleText text-[12px]">City</span>
-                                    }
-                                >
-                                    <Select
-                                        showSearch
-                                        allowClear
-                                        filterOption={(input, option) => {
-                                            return ((option?.value as string) ?? '')
-                                                .toLowerCase()
-                                                .includes(input.toLowerCase());
-                                        }}
-                                        placeholder="Please select a city"
-                                        disabled={!currentCountry}
-                                        className="h-[54px]"
-                                    >
-                                        {currentCountry?.cities.map((county) => (
-                                            <Option key={county.id} value={county.name}>
-                                                {county.name}
-                                            </Option>
-                                        ))}
-                                    </Select>
+                                {/* 城市input */}
+                                <Item name="City" label={
+                                    <span className="text-titleText text-[12px]">City</span>
+                                }>
+                                    <Input
+                                        placeholder="Please enter a city"
+                                        className="h-[54px] rounded-[12px]"
+                                    />
                                 </Item>
+                                {/* 商户名 */}
                                 <Item
                                     name="storeName"
                                     label={
@@ -193,8 +212,30 @@ export default forwardRef<MODAL.ModalActions>(
                                         className="h-[54px] rounded-[12px]"
                                     />
                                 </Item>
+                                {/* 底部按钮，点击上传图片，并标识是否传商户信息 */}
+                                <>
+                                    {/* <UploadBtn formIns={formIns} hideModal={hideModal} /> */}
+                                    <Upload {...uploadProps} className="w-full">
+                                        <Button
+                                            className="w-full mt-[12px] h-[54px]"
+                                            type="primary"
+                                            size="large"
+                                            onClick={() => setIsSkip(1)}
+                                        >
+                                            Continue
+                                        </Button>
+                                    </Upload>
 
-                                <UploadBtn formIns={formIns} hideModal={hideModal} />
+                                    <Upload {...uploadProps} className="w-full">
+                                        <Button
+                                            className="w-full mt-[10px] h-[54px] mb-[18px] text-[#8A8B8D] bg-transparent border-[#8A8B8D]"
+                                            size="large"
+                                            onClick={() => setIsSkip(2)}
+                                        >
+                                            Skip
+                                        </Button>
+                                    </Upload>
+                                </>
                             </Form>
                         </ConfigProvider>
                     </div>
