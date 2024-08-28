@@ -1,6 +1,9 @@
 {
   "common.input.search": "搜索",
   "common.header.login": "登入",
+  "common.site.not_found.text": "找不到页面",
+  "common.site.not_found.button.label": "返回主页",
+  "common.site.not_found.title": "404错误",
   "common.header.register": "注册",
   "common.header.logOut": "登出",
   "common.error.description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",

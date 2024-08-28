@@ -1,6 +1,9 @@
 {
   "common.input.search": "Search",
   "common.header.login": "Connect",
+  "common.site.not_found.text": "Oops that page can’t be found",
+  "common.site.not_found.button.label": "Go Back to Home",
+  "common.site.not_found.title": "404 Error",
   "common.header.register": "Sign Up",
   "common.header.logOut": "Log Out",
   "common.error.description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
