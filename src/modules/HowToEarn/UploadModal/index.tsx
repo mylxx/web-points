@@ -3,6 +3,7 @@
 import { useImperativeHandle, forwardRef, useState } from 'react';
 import { UploadProps } from 'antd/es/upload';
 import { Button, message, Upload } from 'antd';
+import { FilePptOutlined } from '@ant-design/icons';
 import Modal from '@/components/Modal';
 import SVGWrapper from '@/components/SVGWrapper';
 import CloseIcon from '@/assets/images/common/CloseIcon.svg';
@@ -37,7 +38,6 @@ export default forwardRef<MODAL.ModalActions, any>(
                 message.error('图片大小不能超过 30MB!');
                 return false;
             }
-
             const isImageOrPdf =
                 file.type === 'image/jpeg' ||
                 file.type === 'image/png' ||
@@ -94,7 +94,7 @@ export default forwardRef<MODAL.ModalActions, any>(
                     </div>
                     {/* 内容 */}
                     <div className="width-full h-[300px] border-[1px] border-solid border-transparent rounded-[16px]">
-                        <img src={previewSrc} className='w-full h-full object-contain' alt="preview" />
+                        {fileInfo.type === 'application/pdf' ? <FilePptOutlined color='#fff' className='text-[100px] block mx-auto mt-[100px]' /> : <img src={previewSrc} className='w-full h-full object-contain' alt="preview" />}
                     </div>
                     <div className='flex items-start gap-[4px] w-[300px] mx-auto mt-[24px] mb-[30px]'>
                         <SVGWrapper
