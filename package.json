@@ -49,7 +49,6 @@
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "antd": "^5.19.0",
     "axios": "^1.7.2",
-    "babel-plugin-injectcomponentcode": "^1.0.3",
     "babel-plugin-jsxfileattribute": "^1.1.5",
     "classnames": "^2.5.1",
     "crisp-sdk-web": "^1.0.18",
