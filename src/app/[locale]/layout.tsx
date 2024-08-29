@@ -11,7 +11,6 @@ import { I18N_LOCALES } from '@/enums/i18n';
 import AntdRegistry from '@/modules/common/AntdRegistry';
 import AuthGuard from '@/modules/common/AuthGuard';
 import CSSVariableRegistry from '@/modules/common/CSSVariableRegistry';
-import RequestGuard from '@/modules/common/RequestGuard';
 import DevTools from '@/modules/DevTools';
 import { AntdConfigProvider } from '@/providers/AntdConfigProvider';
 import NextIntlClientProvider from '@/providers/NextIntlClientProvider';
@@ -91,7 +90,6 @@ export default async function RootLayout(
                   {/* build-ignore-start */}
                   <DevTools />
                   {/* build-ignore-end */}
-                  <RequestGuard />
                   <Suspense>
                     <AuthGuard />
                   </Suspense>

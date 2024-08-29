@@ -5,3 +5,7 @@
     height: 100%;
   }
 }
+.ant-divider {
+  padding: 0 !important; /* 使用 !important 确保覆盖 */
+  margin: 0 !important; /* 使用 !important 确保覆盖 */
+}
