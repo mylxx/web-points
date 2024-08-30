@@ -21,12 +21,6 @@ function Home() {
           </div>
         </div>
       </div>
-      {/* <div className="flex flex-col gap-[30px] pc:hidden">
-        <MyPoints />
-        <PointsInfo />
-        <HowToGet />
-        <Records />
-      </div> */}
     </div>
   );
 }

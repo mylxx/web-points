@@ -10,6 +10,9 @@ import { loginState } from '@/store';
 const createRequest = (config: CreateAxiosDefaults = {}) => {
   const { ...restConfig } = config;
   const ins = axios.create(Object.assign({}, restConfig));
+  // 需要 check 不同 env 域名是不是一致
+  // 开发环境走代理， 非开发环境直接调用域名
+  if (!isDev) ins.defaults.baseURL = process.env.NEXT_PUBLIC_REQUEST_DOMAIN;
   ins.interceptors.request.use((config) => {
     if (isServer()) {
       throw new Error(JSON.stringify({ code: RESPONSE_CODE.REQUEST_IGNORE }));

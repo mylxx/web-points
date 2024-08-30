@@ -7,3 +7,7 @@ export const getUserAccount = (data?: any) => {
 export const goLogin = (data: any) => {
   return request.post<any>(API.LOG_IN, data);
 };
+
+export const goTest = () => {
+  return request.get<any>('/v1/pub/mix/headerMenu');
+};

@@ -7,11 +7,13 @@
   "common.header.register": "Sign Up",
   "common.header.logOut": "Log Out",
   "common.error.description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
-  "markets.table.noData": "No Data",
+  "common.table.noData": "No Data",
   "common.pendding_page": "The page is entering, please wait...",
   "common.no_permission_page": "The page you are visiting requires login, and we are redirecting you to login...",
   "common.home.coming": "Coming Soon",
   "common.copy.success": "Copy success",
   "request.error.401": "Login expired, please log in again",
-  "common.copy.error": "Copy fail"
+  "common.copy.error": "Copy fail",
+  "common.rules.format": "Incorrect format",
+  "common.blank_tip": "Please fill in"
 }

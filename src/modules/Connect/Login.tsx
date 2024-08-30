@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button, message } from 'antd';
 import { useSetRecoilState } from 'recoil';
 import Input from '@/components/Input';
-// import useTranslations from '@/hooks/useTranslations';
+import useTranslations from '@/hooks/useTranslations';
 import { commonReg } from '@/utils/utils';
-import { goLogin } from '@/apis';
+import { goLogin, goTest } from '@/apis';
 import { RESPONSE_CODE } from '@/enums/request';
 import { loginState } from '@/store';
 
@@ -21,10 +21,16 @@ const Login: React.FC = () => {
   const [submitLoading, setSubmitLoading] = useState(false);
   const [countdown, setCountdown] = useState(0);
   const [buttonEnable, setButtonEnable] = useState(false);
-
   const setIsLogin = useSetRecoilState(loginState);
+  const { t } = useTranslations();
 
-  // const { t } = useTranslations();
+  useEffect(() => {
+    goTest().then(res => {
+      console.log(res)
+    })
+
+  }, [])
+
 
   const handleSendCode = async () => {
     const emailValue = form.getFieldValue('email');
@@ -103,11 +109,11 @@ const Login: React.FC = () => {
           rules={[
             {
               required: true,
-              message: 'contact_information.blank_tip',
+              message: t('common.blank_tip'),
             },
             {
               pattern: commonReg.email,
-              message: 'rules.format',
+              message: t('common.rules.format'),
             },
           ]}
           validateTrigger="onBlur"
@@ -125,7 +131,7 @@ const Login: React.FC = () => {
           className="!mb-[8px]"
         >
           {() => (
-            <div className="w-full relative">
+            <span className="block w-full relative">
               <Item
                 className="w-full"
                 name="code"
@@ -146,7 +152,7 @@ const Login: React.FC = () => {
                   {countdown > 0 ? `${countdown}s` : 'send'}
                 </Button>
               </Item>
-            </div>
+            </span>
           )}
         </Item>
         <Item>

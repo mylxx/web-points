@@ -9,9 +9,11 @@
   "common.error.description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
   "common.pendding_page": "页面正在进入，请稍候...",
   "common.no_permission_page": "访问的页面需要登陆，正在为您跳转到登陆...",
-  "markets.table.noData": "暂无数据",
+  "common.table.noData": "暂无数据",
   "common.copy.success": "复制成功",
   "common.copy.error": "复制失败",
   "common.email.inputTip": "请输入正确的电子邮件地址",
-  "request.error.401": "登录过期，请重新登录"
+  "request.error.401": "登录过期，请重新登录",
+  "common.rules.format": "格式错误",
+  "common.blank_tip": "请输入"
 }

@@ -20,6 +20,8 @@ export default function cusMiddlewareFn(request: NextRequest) {
   if (!I18N_LOCALES.some((itemLang) => pathname.startsWith('/' + itemLang))) {
     request.nextUrl.pathname = '/' + DEFAULT_LOCALE + pathname;
   }
+  console.log('--------------------------------------');
+  console.log('isDev', request.nextUrl.pathname);
 
   // 开发环境 & 接口请求设置代理转发
   if (
@@ -32,7 +34,7 @@ export default function cusMiddlewareFn(request: NextRequest) {
       /\/(en|zh-HK|zh-CN)/,
       '',
     );
-
+    console.log('+++++++++++++++', newPathname);
     return NextResponse.rewrite(
       `${process.env.NEXT_PUBLIC_REQUEST_DOMAIN}${newPathname}`,
     );

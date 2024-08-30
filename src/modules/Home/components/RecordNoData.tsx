@@ -10,7 +10,7 @@ export default function DefDraw(props: { text?: string }) {
         <NoData />
       </SVGWrapper>
       <span className="text-[18px] text-titleText">
-        {text || t('markets.table.noData')}
+        {text || t('common.table.noData')}
       </span>
     </div>
   );

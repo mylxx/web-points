@@ -1,15 +1,15 @@
 'use client';
 
-// import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 // import useTranslations from '@/hooks/useTranslations';
-// import { loginState, userInfoState } from '@/store';
+import { loginState, userInfoState } from '@/store';
 import SVGWrapper from '@/components/SVGWrapper';
 import { useRouter } from '@/utils/navigation';
 import RightArr from '@/assets/images/home/RightArr.svg';
 import ScanToEarn from '@/assets/images/home/ScanToEarn.svg';
 
 export default function HowToGet() {
-  // const [isLogin] = useRecoilState(loginState);
+  const [isLogin] = useRecoilState(loginState);
   // const userInfo = useRecoilValue(userInfoState);
   // console.log(userInfo);
   // const { t } = useTranslations();
@@ -45,6 +45,10 @@ export default function HowToGet() {
   ];
   const jump = (item: LinkItem) => {
     if (!item.path) return;
+    if (item.path === '/scan' && !isLogin) {
+      push('/login');
+      return;
+    }
     if (item.self) {
       push(item.path);
       return;
