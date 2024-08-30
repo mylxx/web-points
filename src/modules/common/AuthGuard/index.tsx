@@ -12,7 +12,7 @@ import { RESPONSE_CODE } from '@/enums/request';
 import { AUTH_TOKEN_STORE_KEY, INSIDE_LOGIN_VISIT_PATH } from '@/enums/site';
 import { loginState, unloggedInSelector, userInfoState } from '@/store';
 
-interface AuthCheckerProps {}
+interface AuthCheckerProps { }
 
 export default function AuthGuard(props: PropsWithChildren<AuthCheckerProps>) {
   const params = useSearchParams();
@@ -22,11 +22,12 @@ export default function AuthGuard(props: PropsWithChildren<AuthCheckerProps>) {
   const { replace } = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
-  const paramsWithoutAuthToken = new URLSearchParams(params.toString());
-  paramsWithoutAuthToken.delete(AUTH_TOKEN_STORE_KEY);
 
   useEffect(() => {
     const authToken = params.get(AUTH_TOKEN_STORE_KEY) || getLocalToken();
+    // 测试
+    setUserInfo({ firstName: 'fef', eCheck: false });
+
     if (authToken) {
       setLocalToken(authToken);
       getUserAccount()
@@ -44,11 +45,6 @@ export default function AuthGuard(props: PropsWithChildren<AuthCheckerProps>) {
         .catch(() => {
           setIsLogin(false);
         });
-      const href =
-        paramsWithoutAuthToken.size > 0
-          ? `${pathname}?${paramsWithoutAuthToken.toString()}`
-          : pathname;
-      replace(href);
     } else {
       setIsLogin(false);
     }

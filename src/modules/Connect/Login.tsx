@@ -25,9 +25,11 @@ const Login: React.FC = () => {
   const { t } = useTranslations();
 
   useEffect(() => {
+    // 测试
     goTest().then(res => {
       console.log(res)
     })
+
 
   }, [])
 

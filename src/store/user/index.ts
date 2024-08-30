@@ -22,6 +22,14 @@ export const userInfoState = atom<UserInfo | undefined>({
   default: undefined,
 });
 
+export const userInfoSelector = selector({
+  key: 'user/userInfo/userInfo',
+  get: ({ get }) => {
+    const userInfo = get(userInfoState);
+    return userInfo;
+  },
+});
+
 export const loggedInSelector = selector({
   key: 'user/loginState/loggedIn',
   get: ({ get }) => {
