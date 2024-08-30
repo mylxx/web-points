@@ -6,7 +6,7 @@ import { useSetRecoilState } from 'recoil';
 import Input from '@/components/Input';
 import useTranslations from '@/hooks/useTranslations';
 import { commonReg } from '@/utils/utils';
-import { goLogin, goTest } from '@/apis';
+import { goLogin } from '@/apis';
 import { RESPONSE_CODE } from '@/enums/request';
 import { loginState } from '@/store';
 
@@ -26,9 +26,9 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     // 测试
-    goTest().then(res => {
-      console.log(res)
-    })
+    // goTest().then(res => {
+    //   console.log(res)
+    // })
 
 
   }, [])
