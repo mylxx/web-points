@@ -1,4 +1,5 @@
 import Login from '@/modules/Connect/Login';
+import NoSSR from '@/components/NoSSR';
 
 export default function Connect() {
   return (
@@ -6,7 +7,9 @@ export default function Connect() {
       style={{ height: `calc(100vh - 60px)` }}
       className="flex pc:items-center justify-center w-[full] mobile:px-[12px] mobile:mt-[110px] mobile:!h-auto"
     >
-      <Login />
+      <NoSSR>
+        <Login />
+      </NoSSR>
     </div>
   );
 }
