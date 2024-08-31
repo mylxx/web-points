@@ -53,7 +53,7 @@ export default function AuthGuard(props: PropsWithChildren<AuthCheckerProps>) {
   useEffect(() => {
     if (isUnlogged) {
       if (INSIDE_LOGIN_VISIT_PATH.includes(pathname)) {
-        replace('/');
+        replace('/login');
       }
     }
   }, [isUnlogged, locale, pathname]);
