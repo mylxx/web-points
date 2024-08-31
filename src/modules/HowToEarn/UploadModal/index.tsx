@@ -146,7 +146,9 @@ export default forwardRef<MODAL.ModalActions, any>(
                 </SVGWrapper>
                 <div className="flex-1 text-[14px] leading-[16px] text-titleText">
                   Please ensure the image is clear and includes the payment
-                  address and amount. What can not be accepted: human / natural
+                  address and amount.
+                  <br />
+                  What can not be accepted: human / natural
                   view etc.
                 </div>
               </div>
