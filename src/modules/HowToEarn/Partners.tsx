@@ -2,11 +2,10 @@
 import { Image } from 'antd';
 import SVGWrapper from '@/components/SVGWrapper';
 import Tips from '@/assets/images/howToEarn/Tips.svg';
-
-// import useTranslations from '@/hooks/useTranslations';
+import useTranslations from '@/hooks/useTranslations';
 
 export default function Partner() {
-  // const { t } = useTranslations();
+  const { t } = useTranslations();
   const partnerList = [
     {
       src: '/images/partner/ALDI.png',
@@ -84,7 +83,7 @@ export default function Partner() {
   return (
     <div className="w-full text-titleText pc:mt-[50px] mobile:mt-[40px]">
       <div className="pc:px-[20px] mobile:px-[12px] text-titleText font-500 pc:text-[24px] pc:mb-[20px] mobile:text-[20px] mobile:mb-[10px]">
-        Get Extra Points From Our Partners
+        {t('scan_get_extra_points')}
       </div>
 
       <div className="p-[20px] rounded-[16px]  bg-backGround">
@@ -108,7 +107,7 @@ export default function Partner() {
             <Tips />
           </SVGWrapper>
           <div className="text-descriptionText text-[12px] leading-[1]">
-            Logo is for display only, merchant cooperation is in progress.
+            {t('scan_partner_logo')}
           </div>
         </div>
       </div>

@@ -5,18 +5,19 @@ import ArrRight from '@/assets/images/howToEarn/ArrRight.svg';
 import Step1 from '@/assets/images/howToEarn/Step1.png';
 import Step2 from '@/assets/images/howToEarn/Step2.png';
 import Step3 from '@/assets/images/howToEarn/Step3.png';
+import useTranslations from '@/hooks/useTranslations';
 
 export default function HowToEarnModule() {
-  // const { t } = useTranslations();
+  const { t } = useTranslations();
   return (
     <div className="w-full text-titleText">
       <div className="pc:px-[20px] mobile:px-[12px] text-titleText font-500 pc:text-[24px] pc:mb-[20px] mobile:text-[20px] mobile:mb-[10px]">
-        How to Earn
+        {t('scan_how_to_earn')}
       </div>
       {/* mobile */}
       <div className="break-words bg-backGround text-[14px] leading-[20px] py-[20px] px-[12px] rounded-[16px] pc:hidden">
         <div className="text-[18px] text-left mb-[22px]">
-          Earn PolyFlow Points by Simply Scanning Your Invoice!
+          {t('scan_earn_points')}
         </div>
         <div className="flex gap-[10px] items-center">
           <AsyncImage
@@ -25,9 +26,9 @@ export default function HowToEarnModule() {
             className="h-[40px] w-[40px] shrink-0"
           />
           <div className="flex-1 flex flex-col justify-center gap-[4px]">
-            <div className="text-titleText text-[14px] font-700">Step 1</div>
+            <div className="text-titleText text-[14px] font-700">{t('scan_step_1')}</div>
             <div className="text-descriptionText text-[14px] font-700">
-              Login
+              {t('common.header.login')}
             </div>
           </div>
         </div>
@@ -43,9 +44,9 @@ export default function HowToEarnModule() {
             className="h-[40px] w-[40px] shrink-0"
           />
           <div className="flex-1 flex flex-col justify-center gap-[4px]">
-            <div className="text-titleText text-[14px] font-700">Step 2</div>
+            <div className="text-titleText text-[14px] font-700">{t('scan_step_2')}</div>
             <div className="text-descriptionText text-[14px] font-700">
-              Scan the invoice or screenshot
+              {t('scan_scan_invoice')}
             </div>
           </div>
         </div>
@@ -61,9 +62,9 @@ export default function HowToEarnModule() {
             className="h-[40px] w-[40px] shrink-0"
           />
           <div className="flex-1 flex flex-col justify-center gap-[4px]">
-            <div className="text-titleText text-[14px] font-700">Step 3</div>
+            <div className="text-titleText text-[14px] font-700">{t('scan_step_3')}</div>
             <div className="text-descriptionText text-[14px] font-700">
-              Get Your PolyFlow Points!
+              {t('scan_get_points')}
             </div>
           </div>
         </div>
@@ -71,7 +72,7 @@ export default function HowToEarnModule() {
       {/* pc */}
       <div className="break-words bg-backGround text-[14px] leading-[20px] pc:min-h-[106px] p-[20px] rounded-[16px] mobile:hidden">
         <div className="text-[18px] text-center mb-[24px]">
-          Earn PolyFlow Points by Simply Scanning Your Invoice!
+          {t('scan_earn_points')}
         </div>
         <div className="px-[36px] flex items-center justify-between">
           <AsyncImage
@@ -101,19 +102,19 @@ export default function HowToEarnModule() {
           />
         </div>
         <div className="px-[36px] flex items-center justify-between mt-[15px]">
-          <div className="text-center w-[60px]">Step 1</div>
-          <div className="text-center w-[60px]">Step 2</div>
-          <div className="text-center w-[60px]">Step 3</div>
+          <div className="text-center w-[60px]">{t('scan_step_1')}</div>
+          <div className="text-center w-[60px]">{t('scan_step_2')}</div>
+          <div className="text-center w-[60px]">{t('scan_step_3')}</div>
         </div>
         <div className="flex  justify-between mt-[15px]">
           <div className="text-center text-[14px] text-descriptionText  w-[150px] pr-[22px]">
-            Login
+            {t('common.header.login')}
           </div>
           <div className="text-center text-[14px] text-descriptionText  w-[150px]">
-            Scan the invoice or screenshot
+            {t('scan_scan_invoice')}
           </div>
           <div className="text-center text-[14px] text-descriptionText  w-[150px]">
-            Get Your PolyFlow Points!
+            {t('scan_get_points')}
           </div>
         </div>
       </div>

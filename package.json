@@ -28,6 +28,7 @@
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.0",
     "@svgr/webpack": "^8.1.0",
+    "dayjs": "^1.11.13",
     "decimal.js": "^10.4.3",
     "js-cookie": "^3.0.5",
     "mockjs": "^1.1.0",

@@ -1,6 +1,6 @@
 'use client';
 
-import { useImperativeHandle, forwardRef, useState } from 'react';
+import { useImperativeHandle, forwardRef, useState, useMemo } from 'react';
 import { FilePptOutlined } from '@ant-design/icons';
 import { Button, message, Upload } from 'antd';
 import { UploadProps } from 'antd/es/upload';
@@ -12,15 +12,14 @@ import CloseIcon from '@/assets/images/common/CloseIcon.svg';
 import MarkIcon from '@/assets/images/common/MarkIcon.svg';
 import './index.scss';
 import ScanImg from '@/assets/images/howToEarn/ScanImg.png';
-
-// import useTranslations from '@/hooks/useTranslations';
+import useTranslations from '@/hooks/useTranslations';
 
 export default forwardRef<MODAL.ModalActions, any>(
   function UploadModal(props, ref) {
     const [open, setOpen] = useState(false);
     const [scanLoading, setScanLoading] = useState(false); // 扫描
     const [result, setResult] = useState<object>({}); // 扫码结果
-    // const { t } = useTranslations();
+    const { t } = useTranslations();
     const {
       isSkip,
       formInfo,
@@ -47,7 +46,7 @@ export default forwardRef<MODAL.ModalActions, any>(
       // 检查文件类型和大小
       const isLt30M = file.size / 1024 / 1024 < 30;
       if (!isLt30M) {
-        message.error('图片大小不能超过 30MB!');
+        message.error(t('upload_size'));
         return false;
       }
       const isImageOrPdf =
@@ -56,7 +55,7 @@ export default forwardRef<MODAL.ModalActions, any>(
         file.type === 'image/bmp' ||
         file.type === 'application/pdf';
       if (!isImageOrPdf) {
-        message.error('文件类型必须为 JPG, PNG, BMP 或 PDF!');
+        message.error(t('upload_type'));
         return false;
       }
       // 生成预览链接
@@ -87,6 +86,17 @@ export default forwardRef<MODAL.ModalActions, any>(
       console.log('fileInfo', fileInfo);
       console.log('formInfo', formInfo);
     };
+    const moduleTitle = useMemo(() => {
+      if (Object.keys(result).length) {
+        return t('upload_result')
+      }
+      if (scanLoading) {
+        return t('upload_analyzing')
+      }
+      return t('upload_pictures')
+
+    }, [scanLoading, result, t])
+
     return (
       <Modal
         open={open}
@@ -100,9 +110,7 @@ export default forwardRef<MODAL.ModalActions, any>(
         <div className="flex flex-col justify-center bg-backGround rounded-[16px] px-[24px] pb-[12px]">
           <div className="flex justify-between items-center mb-[20px] gap-[6px] py-[20px] border-b-[#454549] border-b-[1px] border-b-solid ">
             <div className="text-titleText text-[18px] font-500">
-              {Object.keys(result).length
-                ? 'Upload Results'
-                : 'Upload Pictures'}
+              {moduleTitle}
             </div>
             <SVGWrapper
               className="w-[32px] h-[32px] cursor-pointer"
@@ -113,6 +121,7 @@ export default forwardRef<MODAL.ModalActions, any>(
           </div>
           {/* 内容 */}
           {!Object.keys(result).length ? (
+            // 结果
             <ResultCom result={result} />
           ) : (
             <>
@@ -145,11 +154,9 @@ export default forwardRef<MODAL.ModalActions, any>(
                   <MarkIcon />
                 </SVGWrapper>
                 <div className="flex-1 text-[14px] leading-[16px] text-titleText">
-                  Please ensure the image is clear and includes the payment
-                  address and amount.
+                  {t('upload_ensure_clear')}
                   <br />
-                  What can not be accepted: human / natural
-                  view etc.
+                  {t('upload_not_accepted')}
                 </div>
               </div>
               <div className="flex gap-[10px] pc:mb-[16px] mobile:mb-[30px] mobile:flex-col">
@@ -161,7 +168,7 @@ export default forwardRef<MODAL.ModalActions, any>(
                     className="w-full h-[54px]  text-[#8A8B8D] bg-transparent border-[#8A8B8D]"
                     size="large"
                   >
-                    Reselect
+                    {t('upload_reselect')}
                   </Button>
                 </Upload>
                 <Button
@@ -170,7 +177,7 @@ export default forwardRef<MODAL.ModalActions, any>(
                   size="large"
                   onClick={goUpload}
                 >
-                  Confirm upload
+                  {t('upload_upload')}
                 </Button>
               </div>
             </>

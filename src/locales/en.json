@@ -83,5 +83,15 @@
   "upload_counterparty_gets": "The counterparty gets",
   "upload_points": "Points",
   "upload_sharing_is_caring": "Sharing is Caring",
-  "upload_back_homepage": "Back to Homepage"
+  "upload_back_homepage": "Back to Homepage",
+  "login_code_tip": "请输入验证码",
+  "common.expand": "展开",
+  "common.collapse": "收起",
+  "scan_bills_description": "(Utility bills/credit card bills etc.)",
+  "scan_online_commerce_description": "(Screen shot,goods provenmnt payment.)",
+  "scan_receipt_description": "(In-store shopping etc.)",
+  "scan_business_contracts": "Business Contracts",
+  "upload_size": "图片大小不能超过 30MB",
+  "upload_type": "文件类型必须为 JPG, PNG, BMP 或 PDF",
+  "upload_result": "Upload Results"
 }

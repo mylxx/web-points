@@ -1,7 +1,7 @@
 'use client';
 
 import { useRecoilState, useRecoilValue } from 'recoil';
-// import useTranslations from '@/hooks/useTranslations';
+import useTranslations from '@/hooks/useTranslations';
 import SVGWrapper from '@/components/SVGWrapper';
 import { useRouter } from '@/utils/navigation';
 import RightArr from '@/assets/images/home/RightArr.svg';
@@ -12,7 +12,7 @@ export default function HowToGet() {
   const [isLogin] = useRecoilState(loginState);
   // const userInfo = useRecoilValue(userInfoState);
   // console.log(userInfo);
-  // const { t } = useTranslations();
+  const { t } = useTranslations();
   const { push } = useRouter();
 
   type LinkItem = {
@@ -25,19 +25,19 @@ export default function HowToGet() {
 
   const list = [
     {
-      title: 'Scan to Earn',
+      title: t('points_scan_to_earn'),
       icon: <ScanToEarn />,
       path: '/scan',
       self: true,
     },
     {
-      title: 'Staking',
+      title: t('points_staking'),
       icon: <ScanToEarn />,
       target: '_blank',
       path: 'www.baidu.com',
     },
     {
-      title: 'Apply VISA Master Card',
+      title: t('points_apply_visa_master_card'),
       icon: <ScanToEarn />,
       target: '_blank',
       path: 'www.baidu.com',
@@ -45,6 +45,7 @@ export default function HowToGet() {
   ];
   const jump = (item: LinkItem) => {
     if (!item.path) return;
+    // TODO: 修改
     // if (item.path === '/scan' && !isLogin) {
     //   push('/login');
     //   return;
@@ -61,7 +62,7 @@ export default function HowToGet() {
   return (
     <div className="w-full">
       <div className="px-[20px] text-titleText font-500 pc:text-[24px] pc:mb-[20px] mobile:text-[20px] mobile:mb-[10px]">
-        How to Get Points
+        {t('points_how_to_get_points')}
       </div>
       <div className="flex flex-col gap-[10px]">
         {list.map((item, index) => (

@@ -54,7 +54,8 @@ const Login: React.FC = () => {
         return prevCountdown - 1;
       });
     }, 1000);
-    message.success('验证码发送成功，请查收邮箱！');
+    // message.success('验证码发送成功，请查收邮箱！');
+    message.success(t('login_code_sent'));
     // 这里应调用后端API发送验证码
   };
 
@@ -83,7 +84,7 @@ const Login: React.FC = () => {
   return (
     <div className="w-full max-w-[460px] bg-backGround rounded-[16px] pc:px-[24px] mobile:px-[12px]  pb-[8px]">
       <div className="text-titleText text-[18px] font-500 py-[18px] border-b-[#454549] border-b-[1px] border-b-solid mb-[24px]">
-        Login
+        {t('common.header.login')}
       </div>
       <Form
         form={form}
@@ -107,7 +108,7 @@ const Login: React.FC = () => {
         <Item
           className="!mb-[32px]"
           name="email"
-          label="Email"
+          label={t('login_email')}
           rules={[
             {
               required: true,
@@ -121,7 +122,7 @@ const Login: React.FC = () => {
           validateTrigger="onBlur"
         >
           <Input
-            placeholder="contact_placeholder"
+            placeholder={t('login_email')}
             maxLength={200}
             className="h-[54px] rounded-[12px]"
           />
@@ -137,10 +138,10 @@ const Login: React.FC = () => {
               <Item
                 className="w-full"
                 name="code"
-                label="Verify Code"
-                rules={[{ required: true, message: '请输入验证码!' }]}
+                label={t('login_verification_code')}
+                rules={[{ required: true, message: t('login_code_tip') }]}
               >
-                <Input className="h-[54px] rounded-[12px]" />
+                <Input className="h-[54px] rounded-[12px]" placeholder={t('login_verification_code')} />
               </Item>
               <Item className="absolute right-[10px] top-[38px]">
                 <Button
@@ -151,7 +152,7 @@ const Login: React.FC = () => {
                   // loading={loading}
                   className="!h-[28px] !px-[16px] !rounded-[6px]"
                 >
-                  {countdown > 0 ? `${countdown}s` : 'send'}
+                  {countdown > 0 ? `${countdown}s` : t('login_send')}
                 </Button>
               </Item>
             </span>
@@ -165,7 +166,7 @@ const Login: React.FC = () => {
             disabled={!buttonEnable}
             loading={submitLoading}
           >
-            登录
+            {t('common.header.login')}
           </Button>
         </Item>
       </Form>

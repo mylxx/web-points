@@ -3,28 +3,28 @@ import { Divider, Image } from 'antd';
 import SVGWrapper from '@/components/SVGWrapper';
 import Error from '@/assets/images/howToEarn/Error.svg';
 import Right from '@/assets/images/howToEarn/Right.svg';
-// import useTranslations from '@/hooks/useTranslations';
+import useTranslations from '@/hooks/useTranslations';
 
 export default function WhatCanUpload() {
-  // const { t } = useTranslations();
+  const { t } = useTranslations();
   const faitImgList = [
     {
-      title: 'Bills ',
+      title: t('scan_bills'),
       src: '/images/howToEarn/bill.png',
-      desc: '(Utility bills/credit card bills etc.)',
+      desc: t('scan_bills_description'),
     },
     {
-      title: 'Online Commerce',
+      title: t('scan_online_commerce'),
       src: '/images/howToEarn/onlineCommerce.png',
-      desc: '(Screen shot,goods provenmnt payment.)',
+      desc: t('scan_online_commerce_description'),
     },
     {
-      title: 'Receipt',
+      title: t('scan_receipt'),
       src: '/images/howToEarn/receipt.png',
-      desc: '(In-store shopping etc.)',
+      desc: t('scan_receipt_description'),
     },
     {
-      title: 'Business Contract',
+      title: t('scan_business_contract'),
       src: '/images/howToEarn/businessContract.png',
       desc: '',
     },
@@ -32,19 +32,19 @@ export default function WhatCanUpload() {
 
   const croptyImgList = [
     {
-      title: 'Web3 Wallet Trading ',
+      title: t('scan_web3_trading'),
       src: '/images/howToEarn/web3Wallet.png',
     },
     {
-      title: 'CEX Trading',
+      title: t('scan_cex_trading'),
       src: '/images/howToEarn/cexTrading.png',
     },
     {
-      title: 'Blockchain Trading',
+      title: t('scan_blockchain_trading'),
       src: '/images/howToEarn/blockchainTrading.png',
     },
     {
-      title: 'Business Contracts',
+      title: t('scan_business_contracts'),
       src: '/images/howToEarn/businessContracts.png',
     },
   ];
@@ -52,7 +52,7 @@ export default function WhatCanUpload() {
   return (
     <div className="w-full text-titleText pc:mt-[50px] mobile:mt-[40px]">
       <div className="pc:px-[20px] mobile:px-[12px] text-titleText font-500 pc:text-[24px] pc:mb-[20px] mobile:text-[20px] mobile:mb-[10px]">
-        What kind of invoce can be upload
+        {t('scan_upload_invoice')}
       </div>
       <div className="break-words bg-backGround text-[14px] leading-[20px] pc:min-h-[106px] rounded-[16px]">
         {/* title */}
@@ -61,7 +61,7 @@ export default function WhatCanUpload() {
             <Right />
           </SVGWrapper>
           <div className="text-[16px] font-500 text-titleText">
-            Request according to payment type
+            {t('scan_payment_type')}
           </div>
         </div>
         <Divider plain className="border-[#454549] mb-[24px]" />
@@ -69,7 +69,7 @@ export default function WhatCanUpload() {
           <div className="w-[50%]  mobile:w-full box-border px-[20px] mb-[34px] border-r-[1px] border-solid border-[#454549] mobile:border-none">
             {/* title */}
             <div className="text-descriptionText text-[12px] py-[20px]">
-              Any Fiat currency payment invoice
+              {t('scan_fiat_receipts')}
             </div>
             {/* 下面的示例图 */}
             <div className="flex gap-[10px] flex-wrap mobile:justify-around">
@@ -98,7 +98,7 @@ export default function WhatCanUpload() {
           <div className="w-[50%]  mobile:w-full box-border px-[20px]">
             {/* title */}
             <div className="text-descriptionText text-[12px] py-[20px]">
-              Any Crypto Receipts
+              {t('scan_crypto_receipts')}
             </div>
             {/* 下面的示例图 */}
             <div className="flex gap-[10px] flex-wrap mobile:justify-around">
@@ -127,7 +127,7 @@ export default function WhatCanUpload() {
           <Error />
         </SVGWrapper>
         <div className="break-words text-titleText text-[16px] font-500">
-          What can not be Accepted：human/natural view etc.
+          {t('upload_not_accepted')}
         </div>
       </div>
     </div>

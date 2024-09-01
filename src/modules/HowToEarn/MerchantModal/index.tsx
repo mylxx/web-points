@@ -10,7 +10,7 @@ import SVGWrapper from '@/components/SVGWrapper';
 import { goLogin } from '@/apis';
 import CloseIcon from '@/assets/images/common/CloseIcon.svg';
 import RoundedLogo from '@/assets/images/howToEarn/RoundedLogo.svg';
-// import useTranslations from '@/hooks/useTranslations';
+import useTranslations from '@/hooks/useTranslations';
 import { RESPONSE_CODE } from '@/enums/request';
 
 import './index.scss';
@@ -51,7 +51,7 @@ export default forwardRef<MODAL.ModalActions, any>(
     const { showUploadModal } = props;
     const [open, setOpen] = useState(false);
     const [cuntryList, setCountryList] = useState<any[]>([]);
-    // const { t } = useTranslations();
+    const { t } = useTranslations();
     const [formIns] = Form.useForm();
     const [isSkip, setIsSkip] = useState(0);
     useEffect(() => {
@@ -85,7 +85,7 @@ export default forwardRef<MODAL.ModalActions, any>(
       // 检查文件类型和大小
       const isLt30M = file.size / 1024 / 1024 < 30;
       if (!isLt30M) {
-        message.error('图片大小不能超过 30MB!');
+        message.error(t('upload_size'));
         return false;
       }
 
@@ -95,7 +95,7 @@ export default forwardRef<MODAL.ModalActions, any>(
         file.type === 'image/bmp' ||
         file.type === 'application/pdf';
       if (!isImageOrPdf) {
-        message.error('文件类型必须为 JPG, PNG, BMP 或 PDF!');
+        message.error(t('upload_type'));
         return false;
       }
       // 生成预览链接
@@ -128,7 +128,7 @@ export default forwardRef<MODAL.ModalActions, any>(
         <div>
           <div className="flex justify-center items-center gap-[6px] mb-[20px]">
             <div className="text-titleText text-[16px] font-500">
-              Get an Extra 100 Points
+              {t('merchant_extra_points')}
             </div>
             <SVGWrapper className="w-[22px] h-[22px]">
               <RoundedLogo />
@@ -138,7 +138,7 @@ export default forwardRef<MODAL.ModalActions, any>(
           <div className="flex flex-col justify-center bg-backGround rounded-[16px] px-[24px] pb-[12px]">
             <div className="flex justify-between items-center mb-[20px] gap-[6px] py-[20px] border-b-[#454549] border-b-[1px] border-b-solid ">
               <div className="text-titleText text-[18px] font-500">
-                Fill in merchant information
+                {t('merchant_fill_info')}
               </div>
               <SVGWrapper
                 className="w-[32px] h-[32px] cursor-pointer"
@@ -169,23 +169,23 @@ export default forwardRef<MODAL.ModalActions, any>(
                 }}
               >
                 {/*  */}
-                <Item name="merId" label="Enter merchant PID">
+                <Item name="merId" label={t('merchant_enter_pid')}>
                   <Input
-                    placeholder="Please enter the merchant PID"
+                    placeholder={t('merchant_enter_pid_prompt')}
                     className="h-[54px] rounded-[12px]"
                   />
                 </Item>
                 <Divider plain className="border-[#424242]">
-                  OR
+                  {t('merchant_or')}
                 </Divider>
                 <div className="text-titleText text-[18px] font-500 pt-[4px]">
-                  Fill in merchant information
+                  {t('merchant_fill_info')}
                 </div>
                 {/* 国家 */}
                 <Item
                   name="country"
                   label={
-                    <span className="text-titleText text-[12px]">Country</span>
+                    <span className="text-titleText text-[12px]">{t('merchant_country')}</span>
                   }
                 >
                   <Select
@@ -196,7 +196,7 @@ export default forwardRef<MODAL.ModalActions, any>(
                         .toLowerCase()
                         .includes(input.toLowerCase())
                     }
-                    placeholder="Please select a country"
+                    placeholder={t('merchant_enter_country')}
                     className="h-[54px]"
                   >
                     {cuntryList?.map((city) => (
@@ -208,13 +208,13 @@ export default forwardRef<MODAL.ModalActions, any>(
                 </Item>
                 {/* 城市input */}
                 <Item
-                  name="City"
+                  name="city"
                   label={
-                    <span className="text-titleText text-[12px]">City</span>
+                    <span className="text-titleText text-[12px]">{t('merchant_city')}</span>
                   }
                 >
                   <Input
-                    placeholder="Please enter a city"
+                    placeholder={t('merchant_enter_city')}
                     className="h-[54px] rounded-[12px]"
                   />
                 </Item>
@@ -223,12 +223,12 @@ export default forwardRef<MODAL.ModalActions, any>(
                   name="storeName"
                   label={
                     <span className="text-titleText text-[12px]">
-                      Store Name
+                      {t('merchant_name')}
                     </span>
                   }
                 >
                   <Input
-                    placeholder="Please enter merchant name"
+                    placeholder={t('merchant_enter_name')}
                     className="h-[54px] rounded-[12px]"
                   />
                 </Item>
@@ -241,7 +241,7 @@ export default forwardRef<MODAL.ModalActions, any>(
                       size="large"
                       onClick={() => setIsSkip(1)}
                     >
-                      Continue
+                      {t('merchant_country')}
                     </Button>
                   </Upload>
 
@@ -251,7 +251,7 @@ export default forwardRef<MODAL.ModalActions, any>(
                       size="large"
                       onClick={() => setIsSkip(2)}
                     >
-                      Skip
+                      {t('merchant_skip')}
                     </Button>
                   </Upload>
                 </>

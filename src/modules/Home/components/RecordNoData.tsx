@@ -9,7 +9,7 @@ export default function DefDraw(props: { text?: string }) {
       <SVGWrapper className="w-78 h-50">
         <NoData />
       </SVGWrapper>
-      <span className="text-[18px] text-titleText">
+      <span className="text-[14px] text-titleText">
         {text || t('common.table.noData')}
       </span>
     </div>

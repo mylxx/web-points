@@ -6,9 +6,11 @@ import LanguagePopover from './components/LanguagePopover';
 import PortfolioPopover from './components/PortfolioPopover';
 import { HeaderProps } from './types/header.type';
 import LoginAndRegister from '@/modules/HeaderComponent/components/LoginAndRegister';
+import useTranslations from '@/hooks/useTranslations';
 import { HeaderProvider } from '@/modules/HeaderComponent/providers/HeaderProvider';
 export default function Header(props: HeaderProps) {
   const { sticky, isLogin, isTransparentBg = false } = props;
+  const { t } = useTranslations();
 
   return (
     <HeaderProvider {...props}>
@@ -25,7 +27,7 @@ export default function Header(props: HeaderProps) {
             >
               <div className="flex justify-center items-center pc:gap-[10px] pc:px-[24px] pc:rounded-[12px] mobile:gap-[2px] mobile:px-[12px] mobile:rounded-[8px] h-full bg-backGround">
                 <span className="text-titleText pc:text-[16px] mobile:text-[12px]">
-                  Payment IDs
+                  {t('header_payment_ids')}
                 </span>
                 <SVGWrapper className="w-[10px] h-[10px]">
                   <GoIcon />

@@ -1,19 +1,18 @@
 'use client';
 import React, { useState } from 'react';
 import { useScreenChecker } from '@/hooks/useScreenChecker';
-
-// import useTranslations from '@/hooks/useTranslations';
-import { Flex, Slider, Switch, Typography } from 'antd';
+import useTranslations from '@/hooks/useTranslations';
+import { Typography } from 'antd';
 export default function PointsInfo() {
   const [expanded, setExpanded] = useState(false);
   const { isPC } = useScreenChecker();
 
-  // const { t } = useTranslations();
+  const { t } = useTranslations();
   const { Paragraph } = Typography
   return (
     <div className="w-full text-titleText">
       <div className="px-[20px] text-titleText font-500 pc:text-[24px] pc:mb-[20px] mobile:text-[20px] mobile:mb-[10px]">
-        What is *** Points?
+        {t('points_polyflow_point_system')}
       </div>
       <div className="break-words bg-backGround text-[14px] leading-[20px] pc:min-h-[106px] p-[20px] rounded-[16px]">
 
@@ -30,7 +29,7 @@ export default function PointsInfo() {
           }}
           className='mb-[0]'
         >
-          The PolyFlow Points System is a rewards mechanism designed to incentivize user engagement within the PolyFlow ecosystem. Users earn PolyFlow Points by participating in different activities, such as using the scan-to-earn feature, staking, completing KYC, and other ecosystem-related actions. These points can then be used or redeemed for various benefits or rewards within the PolyFlow platform.
+          {t('points_scan_to_earn_desc')}
         </Paragraph>
 
 
