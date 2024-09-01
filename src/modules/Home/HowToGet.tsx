@@ -1,17 +1,15 @@
 'use client';
 
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import useTranslations from '@/hooks/useTranslations';
 import SVGWrapper from '@/components/SVGWrapper';
 import { useRouter } from '@/utils/navigation';
 import RightArr from '@/assets/images/home/RightArr.svg';
 import ScanToEarn from '@/assets/images/home/ScanToEarn.svg';
-import { loginState, userInfoState } from '@/store';
+import { loginState } from '@/store';
 
 export default function HowToGet() {
   const [isLogin] = useRecoilState(loginState);
-  // const userInfo = useRecoilValue(userInfoState);
-  // console.log(userInfo);
   const { t } = useTranslations();
   const { push } = useRouter();
 

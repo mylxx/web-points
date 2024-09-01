@@ -45,6 +45,7 @@ declare global {
       code: RESPONSE_CODE;
       data: T;
       message?: string;
+      msg?: string;
       params?: Array<string | number>;
     }
   }

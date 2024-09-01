@@ -7,66 +7,51 @@ import { UploadProps } from 'antd/es/upload';
 import Input from '@/components/Input';
 import Modal from '@/components/Modal';
 import SVGWrapper from '@/components/SVGWrapper';
-import { goLogin } from '@/apis';
+import { getCountryList } from '@/apis';
+import { RESPONSE_CODE } from '@/enums/request';
 import CloseIcon from '@/assets/images/common/CloseIcon.svg';
 import RoundedLogo from '@/assets/images/howToEarn/RoundedLogo.svg';
 import useTranslations from '@/hooks/useTranslations';
-import { RESPONSE_CODE } from '@/enums/request';
 
 import './index.scss';
 
 const { Item } = Form;
 const { Option } = Select;
-interface Country {
-  id: string;
-  name: string;
-  cities: City[];
-}
 
-interface City {
-  id: string;
-  name: string;
-}
-
-const initialCountries: Country[] = [
-  {
-    id: 'c1',
-    name: 'City 1',
-    cities: [
-      { id: 'co1', name: 'County 1-1' },
-      { id: 'co2', name: 'County 1-2' },
-    ],
-  },
-  {
-    id: 'c2',
-    name: 'City 2',
-    cities: [
-      { id: 'co3', name: 'County 2-1' },
-      { id: 'co4', name: 'County 2-2' },
-    ],
-  },
-];
 export default forwardRef<MODAL.ModalActions, any>(
   function MerchantModal(props, ref) {
     const { showUploadModal } = props;
     const [open, setOpen] = useState(false);
-    const [cuntryList, setCountryList] = useState<any[]>([]);
+    const [cuntryList, setCountryList] = useState<any[]>([{
+      "country_language_code": "zh",
+      "country_name": "中国"
+    }, {
+      "country_language_code": "jap",
+      "country_name": "小日子"
+    }]);
     const { t } = useTranslations();
     const [formIns] = Form.useForm();
     const [isSkip, setIsSkip] = useState(0);
+
     useEffect(() => {
-      goLogin({ name: 'test' })
+      // 获取国家
+      getCountryList()
         .then((res) => {
-          const { code } = res;
+          const { code, data } = res;
           if (code === RESPONSE_CODE.SUCCESS) {
-            // setUserInfo(res.data);
-            setCountryList(initialCountries);
+            setCountryList(data);
+            // TODO: 修改
+            setCountryList([{
+              "country_language_code": "zh",
+              "country_name": "中国"
+            }
+            ]);
+
           }
         })
         .catch(() => {
-          setCountryList(initialCountries);
+          setCountryList([]);
         })
-        .finally(() => setCountryList(initialCountries));
     });
     const showModal = () => {
       setOpen(true);
@@ -169,7 +154,7 @@ export default forwardRef<MODAL.ModalActions, any>(
                 }}
               >
                 {/*  */}
-                <Item name="merId" label={t('merchant_enter_pid')}>
+                <Item name="merchant_pid" label={t('merchant_enter_pid')}>
                   <Input
                     placeholder={t('merchant_enter_pid_prompt')}
                     className="h-[54px] rounded-[12px]"
@@ -183,7 +168,7 @@ export default forwardRef<MODAL.ModalActions, any>(
                 </div>
                 {/* 国家 */}
                 <Item
-                  name="country"
+                  name="country_language_code"
                   label={
                     <span className="text-titleText text-[12px]">{t('merchant_country')}</span>
                   }
@@ -199,9 +184,9 @@ export default forwardRef<MODAL.ModalActions, any>(
                     placeholder={t('merchant_enter_country')}
                     className="h-[54px]"
                   >
-                    {cuntryList?.map((city) => (
-                      <Option key={city.id} value={city.id}>
-                        {city.name}
+                    {cuntryList?.map((item) => (
+                      <Option key={item.country_language_code} value={item.country_language_code}>
+                        {item.country_name}
                       </Option>
                     ))}
                   </Select>
@@ -220,7 +205,7 @@ export default forwardRef<MODAL.ModalActions, any>(
                 </Item>
                 {/* 商户名 */}
                 <Item
-                  name="storeName"
+                  name="store_name"
                   label={
                     <span className="text-titleText text-[12px]">
                       {t('merchant_name')}

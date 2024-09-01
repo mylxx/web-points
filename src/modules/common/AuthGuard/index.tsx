@@ -24,10 +24,19 @@ export default function AuthGuard(props: PropsWithChildren<AuthCheckerProps>) {
   const locale = useLocale();
 
   useEffect(() => {
-    const authToken = params.get(AUTH_TOKEN_STORE_KEY) || getLocalToken();
-    // 测试
-    setUserInfo({ firstName: 'fef', eCheck: false });
-
+    const authToken = getLocalToken();
+    // 测试 
+    // TODO: 修改
+    setUserInfo({
+      "points": 10,//总积分
+      "user_id": "1829899987500474377",//用户ID
+      "user_name": null,
+      "open_id": "txj_no1@163.com",//邮箱
+      "account_type": "email",//账户类型
+      "create_date": "2024-08-31 23:46:44",
+      "update_date": "2024-09-01 00:01:41"
+    }
+    );
     if (authToken) {
       setLocalToken(authToken);
       getUserAccount()

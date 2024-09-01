@@ -1,49 +1,65 @@
 'use client';
-
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import { useRouter } from '@/utils/navigation';
 import DefDraw from './components/RecordNoData';
 import AntdPagination from '@/modules/common/AntdPagination';
 import useTranslations from '@/hooks/useTranslations';
-import dayjs from 'dayjs'
-import { loginState, userInfoState } from '@/store';
+// import dayjs from 'dayjs'
+import { loginState } from '@/store';
+import { useEffect } from 'react';
+import { getPointsList } from '@/apis';
 
 export default function Records() {
+  const [list, setList] = useState<any>([]);
+  const [total, setTotal] = useState<any>(0);
+  const [page, setPage] = useState<any>(1);
+  const [limit, setLmit] = useState<any>(12);
   const [isLogin] = useRecoilState(loginState);
-  const userInfo = useRecoilValue(userInfoState);
-  console.log(userInfo);
+
   const { t } = useTranslations();
   const { push } = useRouter();
+
+  useEffect(() => {
+    if (!isLogin) {
+      return
+    }
+    getList()
+
+  }, [isLogin])
+
+  const getList = (params?: any) => {
+    const data = {
+      page: params.page || page,
+      limit: params.limit || limit,
+    }
+    getPointsList(data).then(res => {
+      const { code, data } = res
+      if (code === '0') {
+        // setList(data?.list)
+        setList([{
+          "points": 10,//总积分
+          "id": "1",//记录ID
+          "user_id": "1829899987500474377",//用户ID
+          "points_type": "invoice",//pointsType
+          "reason_language_code": "1",//多语言代码
+          "change_points": 10,//积分变动
+          "create_date": "2024-08-31 23:59:43",
+          "update_date": "2024-08-31 23:59:43"
+        }
+        ])
+        setPage(data.page)
+        setLmit(data.limit)
+        setTotal(data.total)
+      }
+    })
+
+  }
   const pageChange = (current: number, size: number) => {
-    console.log(current);
-    console.log(size);
+    // setPage(current)
+    // setLmit(size)
+    getList({ page: current, limit: size })
   };
-  const list = [
-    {
-      date: +new Date(),
-      balance: 122222222,
-      reason: 'fwefefweeewffewfewfewfewfewfewfewf',
-      amount: 3333333,
-    },
-    {
-      date: +new Date(),
-      balance: 122222222,
-      reason: 'fwefefweeewffewfewfewfewfewfewfewf',
-      amount: 3333333,
-    },
-    {
-      date: +new Date(),
-      balance: 122222222,
-      reason: 'fwefefweeewffewfewfewfewfewfewfewf',
-      amount: 3333333,
-    },
-    {
-      date: +new Date(),
-      balance: 122222222,
-      reason: 'fwefefweeewffewfewfewfewfewfewfewf',
-      amount: 3333333,
-    },
-  ];
   return (
     <div className="w-full">
       <div className="px-[20px] text-titleText font-500  pc:text-[24px] pc:mb-[20px] mobile:text-[20px] mobile:mb-[10px]">
@@ -70,22 +86,23 @@ export default function Records() {
             {/* body */}
             <div>
               {!list.length ? (
-                list.map((item, index) => (
+                list.map((item: any, index: any) => (
                   <div
                     key={index}
                     className="flex gap-[8px] border-t-[#424242] border-t-[1px] border-t-solid px-[32px] py-[19px] text-titleText"
                   >
                     <div className="text-[16px] leading-1 font-600 text-left w-[20%] break-words">
-                      {dayjs(item.date).format('YYYY-MM-DD HH:mm')}
+                      {/* {dayjs(item.date).format('YYYY-MM-DD HH:mm')} */}
+                      {item.update_date}
                     </div>
                     <div className="text-[16px] leading-1 font-600 text-left w-[40%] break-words">
-                      {item.reason}
+                      {item.points_type}
                     </div>
                     <div className="text-[16px] leading-1 font-600 text-left w-[20%] break-words">
-                      {item.balance}
+                      {item.points}
                     </div>
                     <div className="text-[16px] leading-1 font-600 text-left w-[20%] break-words">
-                      {item.amount}
+                      {item.change_points}
                     </div>
                   </div>
                 ))
@@ -99,9 +116,9 @@ export default function Records() {
           {list.length && (
             <div className="mt-[32px] flex justify-center overflow-hidden">
               <AntdPagination
-                total={10}
-                curPage={1}
-                pageSize={3}
+                total={total}
+                curPage={page}
+                pageSize={limit}
                 onChange={(current, size) => pageChange(current, size)}
               />
             </div>

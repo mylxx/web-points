@@ -12,11 +12,11 @@ export const getCookieLocale = () => {
 
 // 服务端locale与客户端不同，这里做映射
 export const getServerLocale = (locale: I18N.LocaleType = 'en') => {
-  const localeMap: Record<I18N.LocaleType, 'en_US' | 'zh_CN' | 'zh_HK'> = {
-    en: 'en_US',
-    'zh-CN': 'zh_CN',
-    'zh-HK': 'zh_HK',
-    'dev-lang': 'en_US',
+  const localeMap: Record<I18N.LocaleType, 'en' | 'zh_cn' | 'zh_tw'> = {
+    en: 'en',
+    'zh-CN': 'zh_cn',
+    'zh-HK': 'zh_tw',
+    'dev-lang': 'en',
   };
   return localeMap[locale];
 };

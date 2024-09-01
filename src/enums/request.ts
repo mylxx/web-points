@@ -1,5 +1,5 @@
 export enum RESPONSE_CODE {
-  SUCCESS = '200',
+  SUCCESS = '0',
   ERROR = '-1',
 
   TOKEN_EXPIRED = '401',

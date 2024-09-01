@@ -1,15 +1,16 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, message } from 'antd';
 import { useSetRecoilState } from 'recoil';
 import Input from '@/components/Input';
 import useTranslations from '@/hooks/useTranslations';
 import { commonReg } from '@/utils/utils';
-import { goLogin } from '@/apis';
+import { goLogin, sendEmail } from '@/apis';
 import { RESPONSE_CODE } from '@/enums/request';
 import { loginState } from '@/store';
-
+import { setLocalToken } from '@/utils/tokenUtils';
+import { useRouter } from 'next/navigation';
 const { Item } = Form;
 interface FormValues {
   email: string;
@@ -23,25 +24,15 @@ const Login: React.FC = () => {
   const [buttonEnable, setButtonEnable] = useState(false);
   const setIsLogin = useSetRecoilState(loginState);
   const { t } = useTranslations();
-
-  useEffect(() => {
-    // 测试
-    // goTest().then(res => {
-    //   console.log(res)
-    // })
-
-
-  }, [])
-
+  const { push } = useRouter();
 
   const handleSendCode = async () => {
     const emailValue = form.getFieldValue('email');
     if (!emailValue) {
       return;
     }
-    // 模拟发送验证码的异步操作
     setSendLoading(true);
-    setCountdown(30); // 假设倒计时30秒
+    setCountdown(60); // 假设倒计时30秒
     form.resetFields(['code']); // 重置验证码字段
     const intervalId = window.setInterval(() => {
       setCountdown((prevCountdown) => {
@@ -53,11 +44,23 @@ const Login: React.FC = () => {
         return prevCountdown - 1;
       });
     }, 1000);
-    // message.success('验证码发送成功，请查收邮箱！');
-    message.success(t('login_code_sent'));
     // 这里应调用后端API发送验证码
-  };
+    const data = {
+      open_id: emailValue,//邮箱
+      send_type: "LOGIN"//发送类型
+    }
+    sendEmail(data).then(res => {
+      const { code, msg } = res;
+      if (code === RESPONSE_CODE.SUCCESS) {
+        message.success(t('login_code_sent'));
+        return
+      }
+      msg && message.error(msg);
 
+    }).catch(res => {
+    })
+  };
+  // 提交登录
   const handleFinish = async (values: FormValues) => {
     // 这里应调用后端API进行登录
     if (!values.code) {
@@ -65,20 +68,26 @@ const Login: React.FC = () => {
       return
     }
     setSubmitLoading(true);
+    const data = {
+      open_id: values.email.trim(),
+      verification_code: values.code.trim(),
+      account_type: "email",
+    }
     goLogin({ ...values })
       .then((res) => {
-        const { code } = res;
+        const { code, data, msg } = res;
         if (code === RESPONSE_CODE.SUCCESS) {
-          // setUserInfo(res.data);
+          setLocalToken(data.token);
           setIsLogin(true);
+          push('/')
+          return
         }
+        msg && message.error(msg);
       })
       .catch(() => {
         setIsLogin(false);
       })
       .finally(() => setSubmitLoading(false));
-    console.log('Received values from form: ', values);
-    message.success('登录成功！');
   };
 
   const onFieldsChange = (allSettled: boolean) => {
@@ -122,7 +131,7 @@ const Login: React.FC = () => {
               message: t('common.rules.format'),
             },
           ]}
-          validateTrigger="onBlur"
+        // validateTrigger="onBlur"
         >
           <Input
             placeholder={t('login_email')}
@@ -151,7 +160,7 @@ const Login: React.FC = () => {
                   type="primary"
                   size="small"
                   onClick={handleSendCode}
-                  disabled={!form.getFieldValue('email') || sendLoading}
+                  disabled={!form.getFieldValue('email') || sendLoading || !!form.getFieldError('email').length}
                   // loading={loading}
                   className="!h-[28px] !px-[16px] !rounded-[6px]"
                 >

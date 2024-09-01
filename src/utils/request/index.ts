@@ -2,9 +2,10 @@ import axios, { CreateAxiosDefaults } from 'axios';
 import { setRecoil } from 'recoil-nexus';
 import { getHTTPHeaderLocale } from '@/utils/i18nUtils';
 import { message } from '@/utils/messageNexus';
-import { removeLocalToken } from '@/utils/tokenUtils';
+import { getLocalToken, removeLocalToken } from '@/utils/tokenUtils';
 import { isDev, isServer } from '@/utils/utils';
 import { RESPONSE_CODE } from '@/enums/request';
+import { AUTH_TOKEN_STORE_KEY } from '@/enums/site';
 import { loginState } from '@/store';
 
 const createRequest = (config: CreateAxiosDefaults = {}) => {
@@ -17,7 +18,8 @@ const createRequest = (config: CreateAxiosDefaults = {}) => {
     if (isServer()) {
       throw new Error(JSON.stringify({ code: RESPONSE_CODE.REQUEST_IGNORE }));
     }
-    config.headers.set('X-lang', getHTTPHeaderLocale());
+    config.headers.set('language', getHTTPHeaderLocale());
+    config.headers.set(AUTH_TOKEN_STORE_KEY, getLocalToken());
     return config;
   });
 

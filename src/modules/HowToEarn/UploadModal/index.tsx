@@ -13,6 +13,8 @@ import MarkIcon from '@/assets/images/common/MarkIcon.svg';
 import './index.scss';
 import ScanImg from '@/assets/images/howToEarn/ScanImg.png';
 import useTranslations from '@/hooks/useTranslations';
+import { saveInvoice, getAwsToken } from '@/apis';
+import { RESPONSE_CODE } from '@/enums/request';
 
 export default forwardRef<MODAL.ModalActions, any>(
   function UploadModal(props, ref) {
@@ -21,7 +23,7 @@ export default forwardRef<MODAL.ModalActions, any>(
     const [result, setResult] = useState<object>({}); // 扫码结果
     const { t } = useTranslations();
     const {
-      isSkip,
+      isSkip, // 2跳过
       formInfo,
       previewSrc,
       fileInfo,
@@ -77,6 +79,21 @@ export default forwardRef<MODAL.ModalActions, any>(
     // Confirm upload
     const goUpload = () => {
       setScanLoading(true);
+      getAwsToken().then((res) => {
+        if (res.code === RESPONSE_CODE.SUCCESS) {
+          const data = {
+            ...fileInfo,
+            invoice_path: res.data.path
+          }
+          if (isSkip == 1) {
+            saveInvoice(data).then((res) => {
+              if (res.code === RESPONSE_CODE.SUCCESS) {
+              }
+            })
+          }
+          setScanLoading(false);
+        }
+      })
       setResult({
         mypoints: 344444,
         conterPatry: 5555555,

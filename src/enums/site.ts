@@ -1,4 +1,4 @@
-export const AUTH_TOKEN_STORE_KEY = 'authToken';
+export const AUTH_TOKEN_STORE_KEY = 'token';
 
 export const THEME_STORE_KEY = 'darcy_theme';
 

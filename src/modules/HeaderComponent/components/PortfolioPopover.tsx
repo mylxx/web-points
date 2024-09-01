@@ -35,7 +35,7 @@ export default function PortfolioPopover() {
       placement="bottomRight"
     >
       <div className="cursor-pointer text-titleText common-hover-transition bg-backGround flex items-center justify-center pc:min-w-[204px] pc:h-[46px] pc:px-[32px] pc:rounded-[12px] pc: text-[16px] mobile:px-[6px] mobile:h-[32px] mobile:rounded-[8px] mobile:text-[12px]">
-        {userInfo?.username || 'y3wink@gmal.com'}
+        {userInfo?.open_id}
       </div>
     </Popover>
   );
