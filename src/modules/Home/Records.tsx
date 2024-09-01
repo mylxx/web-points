@@ -1,14 +1,14 @@
 'use client';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { useRouter } from '@/utils/navigation';
 import DefDraw from './components/RecordNoData';
-import AntdPagination from '@/modules/common/AntdPagination';
+import { getPointsList } from '@/apis';
 import useTranslations from '@/hooks/useTranslations';
+import AntdPagination from '@/modules/common/AntdPagination';
 // import dayjs from 'dayjs'
 import { loginState } from '@/store';
-import { useEffect } from 'react';
-import { getPointsList } from '@/apis';
 
 export default function Records() {
   const [list, setList] = useState<any>([]);
@@ -22,50 +22,49 @@ export default function Records() {
 
   useEffect(() => {
     if (!isLogin) {
-      return
+      return;
     }
-    getList()
-
-  }, [isLogin])
+    getList();
+  }, [isLogin]);
 
   const getList = (params?: any) => {
     const data = {
       page: params.page || page,
       limit: params.limit || limit,
-    }
-    getPointsList(data).then(res => {
-      const { code, data } = res
+    };
+    getPointsList(data).then((res) => {
+      const { code, data } = res;
       if (code === '0') {
         // setList(data?.list)
-        setList([{
-          "points": 10,//总积分
-          "id": "1",//记录ID
-          "user_id": "1829899987500474377",//用户ID
-          "points_type": "invoice",//pointsType
-          "reason_language_code": "1",//多语言代码
-          "change_points": 10,//积分变动
-          "create_date": "2024-08-31 23:59:43",
-          "update_date": "2024-08-31 23:59:43"
-        }
-        ])
-        setPage(data.page)
-        setLmit(data.limit)
-        setTotal(data.total)
+        setList([
+          {
+            points: 10, //总积分
+            id: '1', //记录ID
+            user_id: '1829899987500474377', //用户ID
+            points_type: 'invoice', //pointsType
+            reason_language_code: '1', //多语言代码
+            change_points: 10, //积分变动
+            create_date: '2024-08-31 23:59:43',
+            update_date: '2024-08-31 23:59:43',
+          },
+        ]);
+        setPage(data.page);
+        setLmit(data.limit);
+        setTotal(data.total);
       }
-    })
-
-  }
+    });
+  };
   const pageChange = (current: number, size: number) => {
     // setPage(current)
     // setLmit(size)
-    getList({ page: current, limit: size })
+    getList({ page: current, limit: size });
   };
   return (
     <div className="w-full">
       <div className="px-[20px] text-titleText font-500  pc:text-[24px] pc:mb-[20px] mobile:text-[20px] mobile:mb-[10px]">
         {t('points_records')}
       </div>
-      {!isLogin ? (
+      {isLogin ? (
         <div className="overflow-x-auto">
           <div className="bg-backGround pc:min-h-[320px] rounded-[16px] mobile:min-w-[600px]">
             {/* header */}

@@ -88,7 +88,6 @@ export default function Partner() {
 
       <div className="p-[20px] rounded-[16px]  bg-backGround">
         <div className="flex  flex-wrap  items-center justify-center gap-[10px] ">
-
           {partnerList.map((item, index) => (
             <div
               className="box-border text-[0] pc:min-w-[182px] pc:h-[80px] pc:w-[15%] mobile:w-[33%] max-w-[96px] mobile:h-[44px] gap-[6px] rounded-[12px] overflow-hidden bg-[#454549]"
@@ -102,7 +101,7 @@ export default function Partner() {
             </div>
           ))}
         </div>
-        <div className='pc:mb-[10px] pc:mt-[30px] mobile:mt-[20px] mobile:w-[60%] mobile:mx-auto flex pc:items-center mobile:items-start justify-center gap-[5px]'>
+        <div className="pc:mb-[10px] pc:mt-[30px] mobile:mt-[20px] mobile:w-[60%] mobile:mx-auto flex pc:items-center mobile:items-start justify-center gap-[5px]">
           <SVGWrapper className="h-[11px] w-[11px]">
             <Tips />
           </SVGWrapper>

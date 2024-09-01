@@ -25,7 +25,7 @@ const nextConfig = {
   reactStrictMode: false,
   assetPrefix: `${process.env.NEXT_PUBLIC_PREFIX}`,
   sassOptions: {},
-  webpack(config) {
+  webpack (config) {
     !isDev &&
       config.module.rules.unshift({
         test: /\.(tsx?)$/,
@@ -82,27 +82,6 @@ const nextConfig = {
   images: {
     remotePatterns,
   },
-
-  // devServer: {
-  //   proxy: {
-  //     '/api': {
-  //       target: process.env.NEXT_PUBLIC_REQUEST_DOMAIN,
-  //       changeOrigin: true,
-  //       pathRewrite: {
-  //         '^/api': '/data',
-  //       },
-  //     },
-  //   },
-  // },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/api/:path*',
-  //       destination: `http://localhost:5000/api/:path*`,
-  //       // destination: `${process.env.NEXT_PUBLIC_REQUEST_DOMAIN}/:path*`,
-  //     },
-  //   ];
-  // },
 };
 
 export default withNextIntl(withBundleAnalyzer(nextConfig));

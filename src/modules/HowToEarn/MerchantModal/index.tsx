@@ -8,9 +8,9 @@ import Input from '@/components/Input';
 import Modal from '@/components/Modal';
 import SVGWrapper from '@/components/SVGWrapper';
 import { getCountryList } from '@/apis';
-import { RESPONSE_CODE } from '@/enums/request';
 import CloseIcon from '@/assets/images/common/CloseIcon.svg';
 import RoundedLogo from '@/assets/images/howToEarn/RoundedLogo.svg';
+import { RESPONSE_CODE } from '@/enums/request';
 import useTranslations from '@/hooks/useTranslations';
 
 import './index.scss';
@@ -22,13 +22,16 @@ export default forwardRef<MODAL.ModalActions, any>(
   function MerchantModal(props, ref) {
     const { showUploadModal } = props;
     const [open, setOpen] = useState(false);
-    const [cuntryList, setCountryList] = useState<any[]>([{
-      "country_language_code": "zh",
-      "country_name": "中国"
-    }, {
-      "country_language_code": "jap",
-      "country_name": "小日子"
-    }]);
+    const [cuntryList, setCountryList] = useState<any[]>([
+      {
+        country_language_code: 'zh',
+        country_name: '中国',
+      },
+      {
+        country_language_code: 'jap',
+        country_name: '小日子',
+      },
+    ]);
     const { t } = useTranslations();
     const [formIns] = Form.useForm();
     const [isSkip, setIsSkip] = useState(0);
@@ -39,20 +42,20 @@ export default forwardRef<MODAL.ModalActions, any>(
         .then((res) => {
           const { code, data } = res;
           if (code === RESPONSE_CODE.SUCCESS) {
-            setCountryList(data);
+            // setCountryList(data);
             // TODO: 修改
-            setCountryList([{
-              "country_language_code": "zh",
-              "country_name": "中国"
-            }
+            setCountryList([
+              {
+                country_language_code: 'zh',
+                country_name: '中国',
+              },
             ]);
-
           }
         })
         .catch(() => {
           setCountryList([]);
-        })
-    });
+        });
+    }, []);
     const showModal = () => {
       setOpen(true);
     };
@@ -170,7 +173,9 @@ export default forwardRef<MODAL.ModalActions, any>(
                 <Item
                   name="country_language_code"
                   label={
-                    <span className="text-titleText text-[12px]">{t('merchant_country')}</span>
+                    <span className="text-titleText text-[12px]">
+                      {t('merchant_country')}
+                    </span>
                   }
                 >
                   <Select
@@ -185,7 +190,10 @@ export default forwardRef<MODAL.ModalActions, any>(
                     className="h-[54px]"
                   >
                     {cuntryList?.map((item) => (
-                      <Option key={item.country_language_code} value={item.country_language_code}>
+                      <Option
+                        key={item.country_language_code}
+                        value={item.country_language_code}
+                      >
                         {item.country_name}
                       </Option>
                     ))}
@@ -195,7 +203,9 @@ export default forwardRef<MODAL.ModalActions, any>(
                 <Item
                   name="city"
                   label={
-                    <span className="text-titleText text-[12px]">{t('merchant_city')}</span>
+                    <span className="text-titleText text-[12px]">
+                      {t('merchant_city')}
+                    </span>
                   }
                 >
                   <Input

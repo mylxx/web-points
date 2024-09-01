@@ -8,13 +8,13 @@ import AsyncImage from '@/components/AsyncImage';
 import Modal from '@/components/Modal';
 import SVGWrapper from '@/components/SVGWrapper';
 import ResultCom from './ResultCom';
+import { saveInvoice, getAwsToken } from '@/apis';
 import CloseIcon from '@/assets/images/common/CloseIcon.svg';
 import MarkIcon from '@/assets/images/common/MarkIcon.svg';
 import './index.scss';
 import ScanImg from '@/assets/images/howToEarn/ScanImg.png';
-import useTranslations from '@/hooks/useTranslations';
-import { saveInvoice, getAwsToken } from '@/apis';
 import { RESPONSE_CODE } from '@/enums/request';
+import useTranslations from '@/hooks/useTranslations';
 
 export default forwardRef<MODAL.ModalActions, any>(
   function UploadModal(props, ref) {
@@ -83,36 +83,38 @@ export default forwardRef<MODAL.ModalActions, any>(
         if (res.code === RESPONSE_CODE.SUCCESS) {
           const data = {
             ...fileInfo,
-            invoice_path: res.data.path
-          }
+            invoice_path: res.data.path,
+          };
           if (isSkip == 1) {
             saveInvoice(data).then((res) => {
               if (res.code === RESPONSE_CODE.SUCCESS) {
               }
-            })
+            });
           }
           setScanLoading(false);
         }
-      })
-      setResult({
-        mypoints: 344444,
-        conterPatry: 5555555,
       });
-      console.log('previewSrc', previewSrc);
-      console.log('isSkip', isSkip);
-      console.log('fileInfo', fileInfo);
-      console.log('formInfo', formInfo);
+
+      setTimeout(() => {
+        setResult({
+          mypoints: 344444,
+          conterPatry: 5555555,
+        });
+        console.log('previewSrc', previewSrc);
+        console.log('isSkip', isSkip);
+        console.log('fileInfo', fileInfo);
+        console.log('formInfo', formInfo);
+      }, 5000);
     };
     const moduleTitle = useMemo(() => {
       if (Object.keys(result).length) {
-        return t('upload_result')
+        return t('upload_result');
       }
       if (scanLoading) {
-        return t('upload_analyzing')
+        return t('upload_analyzing');
       }
-      return t('upload_pictures')
-
-    }, [scanLoading, result, t])
+      return t('upload_pictures');
+    }, [scanLoading, result, t]);
 
     return (
       <Modal
@@ -137,7 +139,7 @@ export default forwardRef<MODAL.ModalActions, any>(
             </SVGWrapper>
           </div>
           {/* 内容 */}
-          {!Object.keys(result).length ? (
+          {Object.keys(result).length ? (
             // 结果
             <ResultCom result={result} />
           ) : (

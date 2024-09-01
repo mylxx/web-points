@@ -26,7 +26,9 @@ export default function HowToEarnModule() {
             className="h-[40px] w-[40px] shrink-0"
           />
           <div className="flex-1 flex flex-col justify-center gap-[4px]">
-            <div className="text-titleText text-[14px] font-700">{t('scan_step_1')}</div>
+            <div className="text-titleText text-[14px] font-700">
+              {t('scan_step_1')}
+            </div>
             <div className="text-descriptionText text-[14px] font-700">
               {t('common.header.login')}
             </div>
@@ -44,7 +46,9 @@ export default function HowToEarnModule() {
             className="h-[40px] w-[40px] shrink-0"
           />
           <div className="flex-1 flex flex-col justify-center gap-[4px]">
-            <div className="text-titleText text-[14px] font-700">{t('scan_step_2')}</div>
+            <div className="text-titleText text-[14px] font-700">
+              {t('scan_step_2')}
+            </div>
             <div className="text-descriptionText text-[14px] font-700">
               {t('scan_scan_invoice')}
             </div>
@@ -62,7 +66,9 @@ export default function HowToEarnModule() {
             className="h-[40px] w-[40px] shrink-0"
           />
           <div className="flex-1 flex flex-col justify-center gap-[4px]">
-            <div className="text-titleText text-[14px] font-700">{t('scan_step_3')}</div>
+            <div className="text-titleText text-[14px] font-700">
+              {t('scan_step_3')}
+            </div>
             <div className="text-descriptionText text-[14px] font-700">
               {t('scan_get_points')}
             </div>

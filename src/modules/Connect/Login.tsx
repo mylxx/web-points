@@ -45,41 +45,41 @@ const Login: React.FC = () => {
     }, 1000);
     // 这里应调用后端API发送验证码
     const data = {
-      open_id: emailValue,//邮箱
-      send_type: "LOGIN"//发送类型
-    }
-    sendEmail(data).then(res => {
-      const { code, msg } = res;
-      if (code === RESPONSE_CODE.SUCCESS) {
-        message.success(t('login_code_sent'));
-        return
-      }
-      msg && message.error(msg);
-
-    }).catch(res => {
-    })
+      open_id: emailValue, //邮箱
+      send_type: 'LOGIN', //发送类型
+    };
+    sendEmail(data)
+      .then((res) => {
+        const { code, msg } = res;
+        if (code === RESPONSE_CODE.SUCCESS) {
+          message.success(t('login_code_sent'));
+          return;
+        }
+        msg && message.error(msg);
+      })
+      .catch((res) => {});
   };
   // 提交登录
   const handleFinish = async (values: FormValues) => {
     // 这里应调用后端API进行登录
     if (!values.code) {
       message.success(t('login_code_tip'));
-      return
+      return;
     }
     setSubmitLoading(true);
     const data = {
       open_id: values.email.trim(),
       verification_code: values.code.trim(),
-      account_type: "email",
-    }
+      account_type: 'email',
+    };
     goLogin({ ...values })
       .then((res) => {
         const { code, data, msg } = res;
         if (code === RESPONSE_CODE.SUCCESS) {
           setLocalToken(data.token);
           setIsLogin(true);
-          push('/')
-          return
+          push('/');
+          return;
         }
         msg && message.error(msg);
       })
@@ -112,7 +112,11 @@ const Login: React.FC = () => {
           );
         }}
         onFieldsChange={(changedFields, allFields) => {
-          onFieldsChange(allFields.every((field) => !field.errors?.length && Boolean(field.value)));
+          onFieldsChange(
+            allFields.every(
+              (field) => !field.errors?.length && Boolean(field.value),
+            ),
+          );
         }}
         onFinish={handleFinish}
       >
@@ -130,7 +134,7 @@ const Login: React.FC = () => {
               message: t('common.rules.format'),
             },
           ]}
-        // validateTrigger="onBlur"
+          // validateTrigger="onBlur"
         >
           <Input
             placeholder={t('login_email')}
@@ -152,14 +156,20 @@ const Login: React.FC = () => {
                 label={t('login_verification_code')}
                 rules={[{ required: true, message: t('login_code_tip') }]}
               >
-                <Input className="h-[54px] rounded-[12px]" placeholder={t('login_verification_code')} />
+                <Input
+                  className="h-[54px] rounded-[12px]"
+                  placeholder={t('login_verification_code')}
+                />
               </Item>
               <Item className="absolute right-[10px] top-[38px]">
                 <Button
                   type="primary"
                   size="small"
                   onClick={handleSendCode}
-                  disabled={!commonReg.email.test(form.getFieldValue('email')) || sendLoading}
+                  disabled={
+                    !commonReg.email.test(form.getFieldValue('email')) ||
+                    sendLoading
+                  }
                   // loading={loading}
                   className="!h-[28px] !px-[16px] !rounded-[6px]"
                 >

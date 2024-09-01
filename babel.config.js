@@ -10,7 +10,7 @@ const babelPlugins = isDev
         },
       ],
     ]
-  : basePlugins;
+  : [];
 
 module.exports = {
   presets: ['next/babel'],

@@ -24,7 +24,9 @@ const ResultCom: React.FC<{ result: any }> = (result: any) => {
       </div>
       <Divider plain className="border-[#424242]" />
       <div className="flex w-full">
-        <div className={`${result?.conterPatry ? 'pc:w-[50%]' : 'pc:w-full'} mobile:w-full py-[20px] flex flex-col justify-center items-center`}>
+        <div
+          className={`${result?.conterPatry ? 'pc:w-[50%]' : 'pc:w-full'} mobile:w-full py-[20px] flex flex-col justify-center items-center`}
+        >
           <div className="text-[16px] text-descriptionText mb-15px">
             {t('upload_you_get')}
           </div>
@@ -33,13 +35,19 @@ const ResultCom: React.FC<{ result: any }> = (result: any) => {
         </div>
         {result?.conterPatry && (
           <div className="flex pc:w-[50%] mobile:w-full">
-            <Divider plain className="border-[#424242] h-auto" type="vertical" />
+            <Divider
+              plain
+              className="border-[#424242] h-auto"
+              type="vertical"
+            />
             <div className="flex-1 py-[20px] flex flex-col justify-center items-center">
               <div className="text-[16px] text-descriptionText mb-15px">
                 {t('upload_counterparty_gets')}
               </div>
               <div className="text-titleText text-[48px]">5,000</div>
-              <div className="text-titleText text-[14px]">{t('upload_points')}</div>
+              <div className="text-titleText text-[14px]">
+                {t('upload_points')}
+              </div>
             </div>
           </div>
         )}

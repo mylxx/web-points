@@ -9,10 +9,8 @@ const handleI18nRouting = createMiddleware({
   localeDetection: false,
 });
 export default function cusMiddlewareFn(request: NextRequest) {
-  request.headers.set('cus-url', request.url);
-
+  // request.headers.set('cus-url', request.url);
   const { pathname } = request.nextUrl;
-
   if (pathname.startsWith('/_next')) {
     return NextResponse.next();
   }
@@ -27,7 +25,7 @@ export default function cusMiddlewareFn(request: NextRequest) {
   if (
     isDev &&
     I18N_LOCALES.some((itemLang) =>
-      request.nextUrl.pathname.startsWith('/' + itemLang + '/v1/'),
+      request.nextUrl.pathname.startsWith('/' + itemLang + '/api/'),
     )
   ) {
     const newPathname = request.nextUrl.pathname.replace(

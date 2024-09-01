@@ -12,7 +12,7 @@ import { RESPONSE_CODE } from '@/enums/request';
 import { AUTH_TOKEN_STORE_KEY, INSIDE_LOGIN_VISIT_PATH } from '@/enums/site';
 import { loginState, unloggedInSelector, userInfoState } from '@/store';
 
-interface AuthCheckerProps { }
+interface AuthCheckerProps {}
 
 export default function AuthGuard(props: PropsWithChildren<AuthCheckerProps>) {
   const params = useSearchParams();
@@ -25,18 +25,17 @@ export default function AuthGuard(props: PropsWithChildren<AuthCheckerProps>) {
 
   useEffect(() => {
     const authToken = getLocalToken();
-    // 测试 
+    // 测试
     // TODO: 修改
     setUserInfo({
-      "points": 10,//总积分
-      "user_id": "1829899987500474377",//用户ID
-      "user_name": null,
-      "open_id": "txj_no1@163.com",//邮箱
-      "account_type": "email",//账户类型
-      "create_date": "2024-08-31 23:46:44",
-      "update_date": "2024-09-01 00:01:41"
-    }
-    );
+      points: 10, //总积分
+      user_id: '1829899987500474377', //用户ID
+      user_name: null,
+      open_id: 'txj_no1@163.com', //邮箱
+      account_type: 'email', //账户类型
+      create_date: '2024-08-31 23:46:44',
+      update_date: '2024-09-01 00:01:41',
+    });
     if (authToken) {
       setLocalToken(authToken);
       getUserAccount()
