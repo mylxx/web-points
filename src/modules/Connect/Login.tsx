@@ -25,7 +25,6 @@ const Login: React.FC = () => {
   const setIsLogin = useSetRecoilState(loginState);
   const { t } = useTranslations();
   const { push } = useRouter();
-
   const handleSendCode = async () => {
     const emailValue = form.getFieldValue('email');
     if (!emailValue) {
@@ -113,7 +112,7 @@ const Login: React.FC = () => {
           );
         }}
         onFieldsChange={(changedFields, allFields) => {
-          onFieldsChange(allFields.every((field) => Boolean(field.value)));
+          onFieldsChange(allFields.every((field) => !field.errors?.length && Boolean(field.value)));
         }}
         onFinish={handleFinish}
       >
@@ -160,7 +159,7 @@ const Login: React.FC = () => {
                   type="primary"
                   size="small"
                   onClick={handleSendCode}
-                  disabled={!form.getFieldValue('email') || sendLoading || !!form.getFieldError('email').length}
+                  disabled={!commonReg.email.test(form.getFieldValue('email')) || sendLoading}
                   // loading={loading}
                   className="!h-[28px] !px-[16px] !rounded-[6px]"
                 >
