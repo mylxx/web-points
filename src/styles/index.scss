@@ -9,54 +9,8 @@
 }
 
 @font-face {
-  font-family: 'Chakra Petch Bold';
-  src: url('/web-points/fonts/ChakraPetch/ChakraPetch-Bold.ttf');
-}
-@font-face {
-  font-family: 'Chakra Petch Light';
-  src: url('/web-points/fonts/ChakraPetch/ChakraPetch-Light.ttf');
-}
-@font-face {
-  font-family: 'Chakra Petch Medium';
-  src: url('/web-points/fonts/ChakraPetch/ChakraPetch-Medium.ttf');
-}
-@font-face {
-  font-family: 'Chakra Petch Regular';
-  src: url('/web-points/fonts/ChakraPetch/ChakraPetch-Regular.ttf');
-}
-@font-face {
-  font-family: 'Chakra Petch SemiBold';
-  src: url('/web-points/fonts/ChakraPetch/ChakraPetch-SemiBold.ttf');
-}
-
-@font-face {
-  font-family: 'Bai Jamjuree Bold';
-  src: url('/web-points/fonts/BaiJamjuree/BaiJamjuree-Bold.ttf');
-}
-
-@font-face {
-  font-family: 'Bai Jamjuree ExtraLight';
-  src: url('/web-points/fonts/BaiJamjuree/BaiJamjuree-ExtraLight.ttf');
-}
-
-@font-face {
-  font-family: 'Bai Jamjuree Light';
-  src: url('/web-points/fonts/BaiJamjuree/BaiJamjuree-Light.ttf');
-}
-
-@font-face {
-  font-family: 'Bai Jamjuree Medium';
-  src: url('/web-points/fonts/BaiJamjuree/BaiJamjuree-Medium.ttf');
-}
-
-@font-face {
-  font-family: 'Bai Jamjuree Regular';
-  src: url('/web-points/fonts/BaiJamjuree/BaiJamjuree-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'Bai Jamjuree Semibold';
-  src: url('/web-points/fonts/BaiJamjuree/BaiJamjuree-SemiBold.ttf');
+  font-family: 'DM Sans';
+  src: url('/web-points/fonts/DMSans.ttf');
 }
 
 body {
@@ -67,15 +21,15 @@ body {
 }
 
 h1 {
-  @apply font-chakra pc:text-[56px] pc:leading-[72px]  mobile:text-[40px] mobile:leading-[52px];
+  @apply pc:text-[56px] pc:leading-[72px]  mobile:text-[40px] mobile:leading-[52px];
 }
 
 h2 {
-  @apply font-chakra pc:text-[48px] pc:leading-[64px]  mobile:text-[32px] mobile:leading-[44px];
+  @apply pc:text-[48px] pc:leading-[64px]  mobile:text-[32px] mobile:leading-[44px];
 }
 
 h3 {
-  @apply font-chakra text-[36px] leading-[48px] mobile:text-[28px] mobile:leading-[36px];
+  @apply text-[36px] leading-[48px] mobile:text-[28px] mobile:leading-[36px];
 }
 
 .common-hover-transition {

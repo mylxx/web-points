@@ -147,7 +147,7 @@ const InternalSelect = <
         info.isSelected = isSelected;
         const node = originOptionRender?.(oriOption, info) || (
           <span
-            className={cls('text-titleText', { 'font-bai-600': isSelected })}
+            className={cls('text-titleText', { 'font-600': isSelected })}
           >
             {label}
           </span>

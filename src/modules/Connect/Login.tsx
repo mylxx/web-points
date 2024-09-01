@@ -37,7 +37,6 @@ const Login: React.FC = () => {
   const handleSendCode = async () => {
     const emailValue = form.getFieldValue('email');
     if (!emailValue) {
-      message.error('请先输入邮箱地址！');
       return;
     }
     // 模拟发送验证码的异步操作
@@ -61,6 +60,10 @@ const Login: React.FC = () => {
 
   const handleFinish = async (values: FormValues) => {
     // 这里应调用后端API进行登录
+    if (!values.code) {
+      message.success(t('login_code_tip'));
+      return
+    }
     setSubmitLoading(true);
     goLogin({ ...values })
       .then((res) => {

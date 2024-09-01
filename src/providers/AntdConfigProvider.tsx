@@ -21,7 +21,7 @@ const getThemeConfig = (theme: Global.Theme): ThemeConfig => {
   const baiJamjureeRegular =
     themeVariables.global['--font-bai-jamjuree-regular'];
   const baiJamjureeSemibold =
-    themeVariables.global['--font-bai-jamjuree-semibold'];
+    themeVariables.global['--font-bai-jamjuree-regular'];
   const DarkGround = themeVariables[theme]['--dark-ground'];
   const AlwaysWhite = themeVariables.global['--always-white'];
   const DialogBG = themeVariables[theme]['--dialog'];

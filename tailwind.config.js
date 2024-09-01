@@ -72,29 +72,6 @@ module.exports = {
         700: '700',
       },
       fontFamily: {
-        // 300
-        'chakra-300': 'var(--font-chakra-petch-light)',
-        // 400
-        chakra: 'var(--font-chakra-petch-regular)',
-        // 500
-        'chakra-500': 'var(--font-chakra-petch-medium)',
-        // 600
-        'chakra-600': 'var(--font-chakra-petch-semibold)',
-        // 700
-        'chakra-700': 'var(--font-chakra-petch-bold)',
-
-        // 300
-        'bai-300': 'var(--font-bai-jamjuree-light)',
-        // 400
-        bai: 'var(--font-bai-jamjuree-regular)',
-        // 500
-        'bai-500': 'var(--font-bai-jamjuree-medium)',
-        // 600
-        'bai-600': 'var(--font-bai-jamjuree-semibold)',
-        // 700
-        'bai-700': 'var(--font-bai-jamjuree-bold)',
-        // 800
-        'bai-800': 'var(--font-bai-jamjuree-extralight)',
       },
       fontSize: {
         h1: ['56px', '72px'],

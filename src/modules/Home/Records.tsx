@@ -97,7 +97,7 @@ export default function Records() {
             </div>
           </div>
           {list.length && (
-            <div className="mt-[32px] flex justify-center">
+            <div className="mt-[32px] flex justify-center overflow-hidden">
               <AntdPagination
                 total={10}
                 curPage={1}
