@@ -52,7 +52,7 @@ export default function Header(props: { locale?: I18N.LocaleType }) {
       return push(props.path);
     }
 
-    let otherSystemLink = props.path || '/';
+    const otherSystemLink = props.path || '/';
 
     LinkToOtherSystem(otherSystemLink, props.target, searchStr);
   };

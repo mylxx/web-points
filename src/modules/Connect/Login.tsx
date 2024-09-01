@@ -2,15 +2,15 @@
 
 import React, { useState } from 'react';
 import { Form, Button, message } from 'antd';
+import { useRouter } from 'next/navigation';
 import { useSetRecoilState } from 'recoil';
 import Input from '@/components/Input';
-import useTranslations from '@/hooks/useTranslations';
+import { setLocalToken } from '@/utils/tokenUtils';
 import { commonReg } from '@/utils/utils';
 import { goLogin, sendEmail } from '@/apis';
 import { RESPONSE_CODE } from '@/enums/request';
+import useTranslations from '@/hooks/useTranslations';
 import { loginState } from '@/store';
-import { setLocalToken } from '@/utils/tokenUtils';
-import { useRouter } from 'next/navigation';
 const { Item } = Form;
 interface FormValues {
   email: string;

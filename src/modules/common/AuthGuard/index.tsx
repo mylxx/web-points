@@ -9,7 +9,7 @@ import { usePathname, useRouter } from '@/utils/navigation';
 import { getLocalToken, setLocalToken } from '@/utils/tokenUtils';
 import { getUserAccount } from '@/apis';
 import { RESPONSE_CODE } from '@/enums/request';
-import { AUTH_TOKEN_STORE_KEY, INSIDE_LOGIN_VISIT_PATH } from '@/enums/site';
+import { INSIDE_LOGIN_VISIT_PATH } from '@/enums/site';
 import { loginState, unloggedInSelector, userInfoState } from '@/store';
 
 interface AuthCheckerProps {}

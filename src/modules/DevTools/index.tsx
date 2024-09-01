@@ -7,7 +7,6 @@ import {
   SettingOutlined,
 } from '@ant-design/icons';
 import { FloatButton } from 'antd';
-import { isLocalProxy } from '@/utils/envChecker';
 import { I18N_LOCALES } from '@/enums/i18n';
 import useChangeLocale from '@/hooks/useChangeLocale';
 import { useTheme } from '@/hooks/useTheme';

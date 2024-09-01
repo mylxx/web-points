@@ -5,8 +5,8 @@ import HeaderMenu from './components/HeaderMenu';
 import LanguagePopover from './components/LanguagePopover';
 import PortfolioPopover from './components/PortfolioPopover';
 import { HeaderProps } from './types/header.type';
-import LoginAndRegister from '@/modules/HeaderComponent/components/LoginAndRegister';
 import useTranslations from '@/hooks/useTranslations';
+import LoginAndRegister from '@/modules/HeaderComponent/components/LoginAndRegister';
 import { HeaderProvider } from '@/modules/HeaderComponent/providers/HeaderProvider';
 export default function Header(props: HeaderProps) {
   const { sticky, isLogin, isTransparentBg = false } = props;

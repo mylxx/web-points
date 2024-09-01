@@ -1,7 +1,6 @@
 'use client';
 
-import { FC, useState, ReactNode, useEffect, useRef } from 'react';
-import { usePathname } from '@/utils/navigation';
+import { FC, useState, ReactNode, useEffect } from 'react';
 import { getLocalTheme, setLocalTheme } from '@/utils/themeUtils';
 import { ThemeContext, ThemeContextValue } from '@/context/ThemeContext';
 import { SITE_THEME } from '@/enums/site';
@@ -10,8 +9,6 @@ const { Provider } = ThemeContext;
 
 export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<Global.Theme>(SITE_THEME.DARK);
-  const preTheme = useRef<Global.Theme>();
-  const pathname = usePathname();
 
   const toggleTheme: ThemeContextValue['toggleTheme'] = (defaultTheme) => {
     const newTheme =

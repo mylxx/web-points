@@ -1,6 +1,3 @@
-import type { TypeCoinKey, TypeGetMarketsAllCoinItem } from '@/apis/markets';
-
-// export { default as compose } from './compose';
 import compose from './compose';
 export { compose };
 
@@ -23,18 +20,6 @@ export const isServer = () => typeof window === 'undefined';
 export const commonReg = {
   url: /^(http(s)?:\/\/)\w+\S+(\.\S+)+$/,
   email: /^[A-Za-z0-9]+([_.][A-Za-z0-9]+)*@([A-Za-z0-9\-]+\.)+[A-Za-z]{2,6}$/,
-};
-
-// 分组
-type TypeGroupBy<T> = (list: T[], key: keyof T) => Record<TypeCoinKey, T[]>;
-export const groupBy: TypeGroupBy<TypeGetMarketsAllCoinItem> = (
-  list: any[],
-  key: string,
-) => {
-  return (list ?? []).reduce((result, item) => {
-    (result[item[key]] = result[item[key]] || []).push(item);
-    return result;
-  }, Object.create(null));
 };
 
 // 如果算出来是整数， 默认携带两个0

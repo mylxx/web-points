@@ -1,5 +1,5 @@
-import Login from '@/modules/Connect/Login';
 import NoSSR from '@/components/NoSSR';
+import Login from '@/modules/Connect/Login';
 
 export default function Connect() {
   return (
